@@ -40,7 +40,7 @@ public class DataSourceFactory {
 
 
     private static class V2EXBuilder {
-        private String apiUrl = "";
+        private String apiUrl = "https://www.v2ex.com";
 
         private IV2exService build() {
 
