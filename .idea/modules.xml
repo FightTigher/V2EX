@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/V2EX.iml" filepath="$PROJECT_DIR$/V2EX.iml" />
+      <module fileurl="file://$PROJECT_DIR$/baselibrary/baselibrary.iml" filepath="$PROJECT_DIR$/baselibrary/baselibrary.iml" />
+      <module fileurl="file://$PROJECT_DIR$/h5library/h5library.iml" filepath="$PROJECT_DIR$/h5library/h5library.iml" />
+      <module fileurl="file://$PROJECT_DIR$/v2ex/v2ex.iml" filepath="$PROJECT_DIR$/v2ex/v2ex.iml" />
+    </modules>
+  </component>
+</project>
