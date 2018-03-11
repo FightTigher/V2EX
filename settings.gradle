@@ -1,1 +1,1 @@
-include ':v2ex', ':baselibrary', ':h5library'
+include ':v2ex', ':baselibrary', ':h5library', ':opensourcelibrary', ':topicsmoudle', ':messagemoudle', ':TopicsMoudle'

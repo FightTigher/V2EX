@@ -1,4 +1,4 @@
-package com.ecovacs.moudledemo;
+package com.ecovacs.messagemoudle;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getTargetContext();
 
-        assertEquals("com.ecovacs.moudledemo", appContext.getPackageName());
+        assertEquals("com.ecovacs.messagemoudle", appContext.getPackageName());
     }
 }

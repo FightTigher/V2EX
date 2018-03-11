@@ -1,4 +1,4 @@
-package com.ecovacs.moudledemo;
+package com.ecovacs.opensourcelibrary;
 
 import org.junit.Test;
 

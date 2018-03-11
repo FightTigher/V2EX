@@ -3,7 +3,7 @@ apply plugin: 'com.android.application'
 android {
     compileSdkVersion 26
     defaultConfig {
-        applicationId "com.ecovacs.moudledemo"
+        applicationId "com.ecovacs.v2ex"
         minSdkVersion 23
         targetSdkVersion 26
         versionCode 1
@@ -23,12 +23,15 @@ android {
 }
 
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation 'com.android.support:appcompat-v7:26.1.0'
-    implementation 'com.android.support.constraint:constraint-layout:1.0.2'
-    testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'com.android.support.test:runner:1.0.1'
-    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
-    releaseCompile project(path:':h5library',configuration:'release')
-    debugCompile project(path:':h5library',configuration:'debug')
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    androidTestImplementation('com.android.support.test.espresso:espresso-core:3.0.1', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+    testImplementation rootProject.ext.dependencies["junit"]
+    implementation rootProject.ext.dependencies["appcompat-v7"]
+    implementation rootProject.ext.dependencies["design"]
+    implementation rootProject.ext.dependencies["constraint-layout"]
+
+    releaseCompile project(path: ':h5library', configuration: 'release')
+    debugCompile project(path: ':h5library', configuration: 'debug')
 }
