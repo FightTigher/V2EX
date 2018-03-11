@@ -31,7 +31,4 @@ dependencies {
     implementation rootProject.ext.dependencies["appcompat-v7"]
     implementation rootProject.ext.dependencies["design"]
     implementation rootProject.ext.dependencies["constraint-layout"]
-
-    releaseCompile project(path: ':h5library', configuration: 'release')
-    debugCompile project(path: ':h5library', configuration: 'debug')
 }
