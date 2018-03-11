@@ -1,4 +1,4 @@
-package com.ecovacs.h5library;
+package com.ecovacs.h5;
 
 import org.junit.Test;
 

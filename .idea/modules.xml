@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/H5Library/H5Library.iml" filepath="$PROJECT_DIR$/H5Library/H5Library.iml" />
       <module fileurl="file://$PROJECT_DIR$/TopicsModule/TopicsModule.iml" filepath="$PROJECT_DIR$/TopicsModule/TopicsModule.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/V2EX.iml" filepath="$PROJECT_DIR$/.idea/V2EX.iml" />
       <module fileurl="file://E:\work\V2EX\V2EX.iml" filepath="E:\work\V2EX\V2EX.iml" />

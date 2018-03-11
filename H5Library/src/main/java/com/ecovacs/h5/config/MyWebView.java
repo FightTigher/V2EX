@@ -1,4 +1,4 @@
-package com.ecovacs.h5library.config;
+package com.ecovacs.h5.config;
 
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -11,6 +11,8 @@ import android.webkit.WebResourceRequest;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+
+import com.ecovacs.baselibrary.utils.NetUtils;
 
 /**
  * Created by liang.liu on 2018/3/9.
