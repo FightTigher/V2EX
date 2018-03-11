@@ -8,9 +8,10 @@
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/TopicsModule" />
             <option value="$PROJECT_DIR$/baselibrary" />
             <option value="$PROJECT_DIR$/h5library" />
-            <option value="$PROJECT_DIR$/messagemoudle" />
+            <option value="$PROJECT_DIR$/messagemodule" />
             <option value="$PROJECT_DIR$/opensourcelibrary" />
             <option value="$PROJECT_DIR$/v2ex" />
           </set>
