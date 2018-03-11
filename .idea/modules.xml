@@ -2,14 +2,12 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/TopicsMoudle/TopicsMoudle.iml" filepath="$PROJECT_DIR$/TopicsMoudle/TopicsMoudle.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/V2EX.iml" filepath="$PROJECT_DIR$/.idea/V2EX.iml" />
       <module fileurl="file://E:\work\V2EX\V2EX.iml" filepath="E:\work\V2EX\V2EX.iml" />
       <module fileurl="file://$PROJECT_DIR$/baselibrary/baselibrary.iml" filepath="$PROJECT_DIR$/baselibrary/baselibrary.iml" />
       <module fileurl="file://$PROJECT_DIR$/h5library/h5library.iml" filepath="$PROJECT_DIR$/h5library/h5library.iml" />
       <module fileurl="file://$PROJECT_DIR$/messagemoudle/messagemoudle.iml" filepath="$PROJECT_DIR$/messagemoudle/messagemoudle.iml" />
       <module fileurl="file://$PROJECT_DIR$/opensourcelibrary/opensourcelibrary.iml" filepath="$PROJECT_DIR$/opensourcelibrary/opensourcelibrary.iml" />
-      <module fileurl="file://$PROJECT_DIR$/topicsmoudle/hottopicsmoudle.iml" filepath="$PROJECT_DIR$/topicsmoudle/hottopicsmoudle.iml" />
       <module fileurl="file://$PROJECT_DIR$/v2ex/v2ex.iml" filepath="$PROJECT_DIR$/v2ex/v2ex.iml" />
     </modules>
   </component>
