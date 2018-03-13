@@ -9,29 +9,19 @@ android {
         versionName "1.0"
 
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
-
-    }
-    buildTypes {
-        release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-        }
-    }
-    buildTypes {
-        release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-        }
-        debug {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-        }
-    }
-    compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
     }
     buildToolsVersion '26.0.2'
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    dataBinding {
+        enabled true
+    }
+
 }
 
 configurations{
@@ -46,6 +36,9 @@ dependencies {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
 
+    implementation rootProject.ext.dependencies["design"]
+
+
     implementation rootProject.ext.dependencies["converter-gson"]
     implementation rootProject.ext.dependencies["adapter-rxjava"]
     implementation rootProject.ext.dependencies["retrofit"]
@@ -56,5 +49,9 @@ dependencies {
     implementation rootProject.ext.dependencies["okhttp3-logging-interceptor"]
 
     implementation rootProject.ext.dependencies["rxjava"]
+    implementation rootProject.ext.dependencies["rxandroid"]
+
+    implementation rootProject.ext.dependencies["glide"]
+    annotationProcessor rootProject.ext.dependencies["glide-compiler"]
 
 }
