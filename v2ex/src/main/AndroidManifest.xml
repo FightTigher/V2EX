@@ -15,7 +15,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name="com.ecovacs.v2ex.MainActivity"
+            android:name=".MainActivity"
             android:label="@string/title_activity_main"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
@@ -25,8 +25,11 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.ecovacs.v2ex.LoginActivity"
+            android:name=".LoginActivity"
             android:label="@string/title_activity_login" />
+        <activity
+            android:name=".Main2Activity"
+            android:label="@string/title_activity_main2" />
     </application>
 
 </manifest>

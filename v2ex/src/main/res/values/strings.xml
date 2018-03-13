@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">MoudleDemo</string>
+    <string name="app_name">V2ex</string>
     <string name="title_activity_login">Sign in</string>
 
     <!-- Strings related to login -->
@@ -17,4 +17,8 @@
     <string name="title_activity_main">MainActivity</string>
     <string name="action_settings">Settings</string>
     <string name="section_format">Hello World from section: %1$d</string>
+    <string name="title_activity_main2">Main2Activity</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
 </resources>
