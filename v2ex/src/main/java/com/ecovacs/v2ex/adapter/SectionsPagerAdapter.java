@@ -4,7 +4,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
-import com.ecovacs.v2ex.fragment.PlaceholderFragment;
+import com.ecovacs.v2ex.fragment.TopicsFragment;
 
 /**
  * Created by Joker on 2018/3/13.
@@ -17,7 +17,7 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
 
     @Override
     public Fragment getItem(int position) {
-        return PlaceholderFragment.newInstance(position + 1);
+        return TopicsFragment.
     }
 
     @Override

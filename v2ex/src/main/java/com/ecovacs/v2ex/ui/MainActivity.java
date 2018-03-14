@@ -1,39 +1,52 @@
-package com.ecovacs.v2ex;
+package com.ecovacs.v2ex.ui;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.BottomNavigationView;
+import android.support.design.widget.CoordinatorLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.ecovacs.v2ex.R;
 import com.ecovacs.v2ex.adapter.SectionsPagerAdapter;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
 
 public class MainActivity extends AppCompatActivity {
 
+    @BindView(R.id.toolbar)
+    Toolbar mToolbar;
+    @BindView(R.id.appbar)
+    AppBarLayout mAppbar;
+    @BindView(R.id.container)
+    ViewPager mContainer;
+    @BindView(R.id.navigation)
+    BottomNavigationView mNavigation;
+    @BindView(R.id.main_content)
+    CoordinatorLayout mMainContent;
     private SectionsPagerAdapter mSectionsPagerAdapter;
-
-    private ViewPager mViewPager;
-    private BottomNavigationView navigation;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        ButterKnife.bind(this);
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+        setSupportActionBar(mToolbar);
 
         mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
 
-        mViewPager = (ViewPager) findViewById(R.id.container);
-        mViewPager.setAdapter(mSectionsPagerAdapter);
-        mViewPager.addOnPageChangeListener(pageChangeListener);
+        mContainer = (ViewPager) findViewById(R.id.container);
+        mContainer.setAdapter(mSectionsPagerAdapter);
+        mContainer.addOnPageChangeListener(pageChangeListener);
 
-        navigation = (BottomNavigationView) findViewById(R.id.navigation);
-        navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+        mNavigation = (BottomNavigationView) findViewById(R.id.navigation);
+        mNavigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 
     }
 
@@ -44,13 +57,13 @@ public class MainActivity extends AppCompatActivity {
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
             switch (item.getItemId()) {
                 case R.id.navigation_home:
-                    mViewPager.setCurrentItem(0);
+                    mContainer.setCurrentItem(0);
                     return true;
                 case R.id.navigation_dashboard:
-                    mViewPager.setCurrentItem(1);
+                    mContainer.setCurrentItem(1);
                     return true;
                 case R.id.navigation_notifications:
-                    mViewPager.setCurrentItem(2);
+                    mContainer.setCurrentItem(2);
                     return true;
             }
             return false;
@@ -67,13 +80,13 @@ public class MainActivity extends AppCompatActivity {
         public void onPageSelected(int position) {
             switch (position) {
                 case 0:
-                    navigation.setSelectedItemId(R.id.navigation_home);
+                    mNavigation.setSelectedItemId(R.id.navigation_home);
                     break;
                 case 1:
-                    navigation.setSelectedItemId(R.id.navigation_dashboard);
+                    mNavigation.setSelectedItemId(R.id.navigation_dashboard);
                     break;
                 case 2:
-                    navigation.setSelectedItemId(R.id.navigation_notifications);
+                    mNavigation.setSelectedItemId(R.id.navigation_notifications);
                     break;
 
                 default:
@@ -104,9 +117,6 @@ public class MainActivity extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
-
-
-
 
 
 }
