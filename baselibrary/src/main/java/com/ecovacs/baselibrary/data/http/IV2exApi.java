@@ -1,4 +1,4 @@
-package com.ecovacs.baselibrary.http;
+package com.ecovacs.baselibrary.data.http;
 
 import com.ecovacs.baselibrary.entry.MemberInfoBean;
 import com.ecovacs.baselibrary.entry.RepliesBean;
@@ -10,6 +10,7 @@ import com.ecovacs.baselibrary.entry.TopicBean;
 import java.util.List;
 
 import io.reactivex.Flowable;
+import io.reactivex.Single;
 import retrofit2.http.GET;
 import retrofit2.http.Path;
 
@@ -17,7 +18,7 @@ import retrofit2.http.Path;
  * Created by liang.liu on 2018/3/9.
  */
 
-public interface IV2exService {
+public interface IV2exApi {
 
     @GET("/api/site/info.json")
     Flowable<SiteInfoBean> getSiteInfo(); //取网站信息
@@ -41,7 +42,7 @@ public interface IV2exService {
     Flowable<MemberInfoBean>  getMemberInfoByUserName(@Path("username") String username);   //（username 参数必须）通过用户名称获取用户信息
 
     @GET("/api/topics/hot.json")
-    Flowable<List<TopicBean>> getHotTopics();  //获取社区每天最热的10个主题
+    Single<List<TopicBean>> getHotTopics();  //获取社区每天最热的10个主题
 
     @GET("/api/topics/show.json?{id}")
     Flowable<List<TopicBean>> getTopicsById(@Path("id") String id);  //（id 参数必须）通过主题 id 获取主题的信息

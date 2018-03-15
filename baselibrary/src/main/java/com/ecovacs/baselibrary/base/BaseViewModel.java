@@ -4,6 +4,7 @@ import android.arch.lifecycle.ViewModel;
 import android.databinding.ObservableBoolean;
 
 import com.ecovacs.baselibrary.base.rx.SchedulerProvider;
+import com.ecovacs.baselibrary.data.DataManager;
 
 import io.reactivex.disposables.CompositeDisposable;
 
@@ -13,7 +14,9 @@ import io.reactivex.disposables.CompositeDisposable;
 
 public abstract class BaseViewModel<N> extends ViewModel {
 
-    private final ObservableBoolean mIsLoading = new ObservableBoolean(true);
+    private final DataManager mDataManager;
+
+    private final ObservableBoolean mIsLoading = new ObservableBoolean(false);
 
     private final SchedulerProvider mSchedulerProvider;
 
@@ -21,15 +24,25 @@ public abstract class BaseViewModel<N> extends ViewModel {
 
     private N mNavigator;
 
-    public BaseViewModel(SchedulerProvider schedulerProvider, CompositeDisposable compositeDisposable) {
-        mSchedulerProvider = schedulerProvider;
-        mCompositeDisposable = compositeDisposable;
+    public BaseViewModel(DataManager dataManager,
+                         SchedulerProvider schedulerProvider) {
+        this.mDataManager = dataManager;
+        this.mSchedulerProvider = schedulerProvider;
+        this.mCompositeDisposable = new CompositeDisposable();
     }
 
     @Override
     protected void onCleared() {
         mCompositeDisposable.dispose();
         super.onCleared();
+    }
+
+    public CompositeDisposable getCompositeDisposable() {
+        return mCompositeDisposable;
+    }
+
+    public DataManager getDataManager() {
+        return mDataManager;
     }
 
     public ObservableBoolean getIsLoading() {
@@ -40,19 +53,15 @@ public abstract class BaseViewModel<N> extends ViewModel {
         mIsLoading.set(isLoading);
     }
 
-    public SchedulerProvider getSchedulerProvider() {
-        return mSchedulerProvider;
-    }
-
-    public CompositeDisposable getCompositeDisposable() {
-        return mCompositeDisposable;
-    }
-
     public N getNavigator() {
         return mNavigator;
     }
 
     public void setNavigator(N navigator) {
-        mNavigator = navigator;
+        this.mNavigator = navigator;
+    }
+
+    public SchedulerProvider getSchedulerProvider() {
+        return mSchedulerProvider;
     }
 }

@@ -1,5 +1,6 @@
 package com.ecovacs.baselibrary.entry;
 
+
 /**
  * Created by Joker on 2018/3/9.
  */

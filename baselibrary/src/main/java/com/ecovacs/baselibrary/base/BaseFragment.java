@@ -5,6 +5,7 @@ import android.databinding.DataBindingUtil;
 import android.databinding.ViewDataBinding;
 import android.os.Bundle;
 import android.support.annotation.LayoutRes;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -19,11 +20,31 @@ import dagger.android.support.AndroidSupportInjection;
 
 public abstract class BaseFragment<T extends ViewDataBinding, V extends BaseViewModel> extends Fragment {
 
-
     private BaseActivity mActivity;
     private View mRootView;
     private T mViewDataBinding;
     private V mViewModel;
+
+    /**
+     * Override for set binding variable
+     *
+     * @return variable id
+     */
+    public abstract int getBindingVariable();
+
+    /**
+     * @return layout resource id
+     */
+    public abstract
+    @LayoutRes
+    int getLayoutId();
+
+    /**
+     * Override for set view model
+     *
+     * @return view model instance
+     */
+    public abstract V getViewModel();
 
     @Override
     public void onAttach(Context context) {
@@ -43,36 +64,24 @@ public abstract class BaseFragment<T extends ViewDataBinding, V extends BaseView
         setHasOptionsMenu(false);
     }
 
-    protected abstract V getViewModel();
-
-    private void performDependencyInjection() {
-        AndroidSupportInjection.inject(this);
-    }
-
-    @Nullable
     @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         mViewDataBinding = DataBindingUtil.inflate(inflater, getLayoutId(), container, false);
         mRootView = mViewDataBinding.getRoot();
         return mRootView;
     }
 
-    @LayoutRes
-    protected abstract int getLayoutId();
-
-    @Override
-    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-        mViewDataBinding.setVariable(getBindingVariable(), mViewModel);
-        mViewDataBinding.executePendingBindings();
-    }
-
-    protected abstract int getBindingVariable();
-
     @Override
     public void onDetach() {
         mActivity = null;
         super.onDetach();
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        mViewDataBinding.setVariable(getBindingVariable(), mViewModel);
+        mViewDataBinding.executePendingBindings();
     }
 
     public BaseActivity getBaseActivity() {
@@ -99,6 +108,9 @@ public abstract class BaseFragment<T extends ViewDataBinding, V extends BaseView
         }
     }
 
+    private void performDependencyInjection() {
+        AndroidSupportInjection.inject(this);
+    }
 
     public interface Callback {
 

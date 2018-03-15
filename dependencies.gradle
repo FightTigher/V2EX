@@ -3,7 +3,7 @@ project.ext {
     okHttpVersion = "3.10.0"
     retrofitVersion = "2.3.0"
     routerVersion = ""
-    rxJavaVersion = "2.1.8"
+    rxJavaVersion = "2.1.9"
     rxAndroidVersion = "2.0.1"
     rxBindingVersion = "2.1.1"
     daggerVersion = "2.14.1"

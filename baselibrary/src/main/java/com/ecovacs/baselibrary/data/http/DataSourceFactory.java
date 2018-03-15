@@ -1,4 +1,4 @@
-package com.ecovacs.baselibrary.http;
+package com.ecovacs.baselibrary.data.http;
 
 import android.os.Environment;
 
@@ -22,9 +22,9 @@ public class DataSourceFactory {
 
     private static final Object monitor = new Object();
 
-    private static IV2exService mIV2exService = null;
+    private static IV2exApi mIV2exService = null;
 
-    public static IV2exService getInstance() {
+    public static IV2exApi getInstance() {
 
         if (mIV2exService == null) {
 
@@ -42,7 +42,7 @@ public class DataSourceFactory {
     private static class V2EXBuilder {
         private String apiUrl = "https://www.v2ex.com";
 
-        private IV2exService build() {
+        private IV2exApi build() {
 
             HttpLoggingInterceptor.Level level = HttpLoggingInterceptor.Level.BODY;
 
@@ -79,7 +79,7 @@ public class DataSourceFactory {
                     .client(client)
                     .build();
 
-            return retrofit.create(IV2exService.class);
+            return retrofit.create(IV2exApi.class);
 
         }
     }

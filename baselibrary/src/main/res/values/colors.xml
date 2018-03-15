@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black_effective">#2a2a2a</color>
+    <color name="white">#ffffff</color>
+    <color name="type_color">#f5f5f5</color>
+    <color name="item_author_color">#555555</color>
+</resources>
