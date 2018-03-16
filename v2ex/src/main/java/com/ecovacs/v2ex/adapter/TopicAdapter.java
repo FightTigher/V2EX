@@ -1,11 +1,16 @@
 package com.ecovacs.v2ex.adapter;
 
 import android.support.v7.widget.RecyclerView;
-import android.view.View;
+import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
 import com.ecovacs.baselibrary.base.BaseViewHolder;
 import com.ecovacs.baselibrary.entry.TopicBean;
+import com.ecovacs.baselibrary.utils.AppLogger;
+import com.ecovacs.v2ex.databinding.ItemTopicEmptyViewBinding;
+import com.ecovacs.v2ex.databinding.ItemTopicViewBinding;
+import com.ecovacs.v2ex.viewmodel.TopicItemEmptyViewModel;
+import com.ecovacs.v2ex.viewmodel.TopicItemViewModel;
 
 import java.util.List;
 
@@ -21,6 +26,8 @@ public class TopicAdapter extends RecyclerView.Adapter<BaseViewHolder> {
 
     private List<TopicBean> mTopicList;
 
+    private TopicAdapterListener mListener;
+
     public TopicAdapter(List<TopicBean> topicList) {
         mTopicList = topicList;
     }
@@ -29,20 +36,32 @@ public class TopicAdapter extends RecyclerView.Adapter<BaseViewHolder> {
     public BaseViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         switch (viewType) {
             case VIEW_TYPE_NORMAL:
-
-                break;
+                ItemTopicViewBinding topicViewBinding = ItemTopicViewBinding.inflate(
+                        LayoutInflater.from(parent.getContext()), parent, false);
+                return new TopicViewHolder(topicViewBinding);
             case VIEW_TYPE_EMPTY:
             default:
-                break;
+                ItemTopicEmptyViewBinding topicEmptyViewBinding = ItemTopicEmptyViewBinding.inflate(
+                        LayoutInflater.from(parent.getContext()),parent,false);
+
+                return new EmptyViewHolder(topicEmptyViewBinding);
         }
-
-
-        return null;
     }
 
     @Override
     public void onBindViewHolder(BaseViewHolder holder, int position) {
         holder.onBind(position);
+    }
+
+    public void addItems(List<TopicBean> list){
+        mTopicList.addAll(list);
+        notifyDataSetChanged();
+
+
+    }
+
+    public void clearItems(){
+        mTopicList.clear();
     }
 
     @Override
@@ -62,16 +81,69 @@ public class TopicAdapter extends RecyclerView.Adapter<BaseViewHolder> {
         }
     }
 
+    public void setListener(TopicAdapterListener listener) {
+        this.mListener = listener;
+    }
 
-    public class TopicViewHolder extends BaseViewHolder{
+    public interface TopicAdapterListener {
 
-        public TopicViewHolder(View itemView) {
-            super(itemView);
+        void onRetryClick();
+    }
+
+    public class TopicViewHolder extends BaseViewHolder implements TopicItemViewModel.TopicItemViewModelListener {
+
+        private final ItemTopicViewBinding mBinding;
+        private TopicItemViewModel mTopicItemViewModel;
+
+        public TopicViewHolder(ItemTopicViewBinding binding) {
+            super(binding.getRoot());
+            this.mBinding = binding;
         }
 
         @Override
         public void onBind(int position) {
+            TopicBean topicBean = mTopicList.get(position);
 
+            mTopicItemViewModel = new TopicItemViewModel(this, topicBean);
+            mBinding.setViewModel(mTopicItemViewModel);
+
+            mBinding.executePendingBindings();
+        }
+
+        @Override
+        public void onItemClick(int topicId) {
+            if (topicId != 0) {
+                try {
+//                    Intent intent = new Intent();
+//                    intent.setAction(Intent.ACTION_VIEW);
+//                    intent.addCategory(Intent.CATEGORY_BROWSABLE);
+//                    itemView.getContext().startActivity(intent);
+                } catch (Exception e) {
+                    AppLogger.d("url error");
+                }
+            }
+        }
+    }
+
+
+    public class EmptyViewHolder extends BaseViewHolder implements TopicItemEmptyViewModel.TopicItemEmptyViewModelListener {
+
+        private final ItemTopicEmptyViewBinding binding;
+
+        public EmptyViewHolder(ItemTopicEmptyViewBinding binding) {
+            super(binding.getRoot());
+            this.binding = binding;
+        }
+
+        @Override
+        public void onBind(int position) {
+            TopicItemEmptyViewModel viewModel = new TopicItemEmptyViewModel(this);
+            binding.setViewModel(viewModel);
+        }
+
+        @Override
+        public void onRetryClick() {
+            mListener.onRetryClick();
         }
     }
 

@@ -29,6 +29,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:padding="3dp"
                 android:orientation="vertical"
                 >
 
@@ -55,13 +56,13 @@
                         tools:text="Amit Shekhar"/>
 
                     <TextView
-                        android:id="@+id/tv_time"
+                        android:id="@+id/tv_date"
                         style="@style/TextStyle.Title.Sub"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignBottom="@+id/iv_head"
                         android:layout_toRightOf="@+id/iv_head"
-                        android:text="@{viewModel.time}"
+                        android:text="@{viewModel.date}"
                         tools:text="Amit Shekhar"/>
 
 
@@ -72,7 +73,7 @@
                         android:layout_height="wrap_content"
                         android:layout_alignBottom="@+id/iv_head"
                         android:layout_marginLeft="8dp"
-                        android:layout_toRightOf="@+id/tv_time"
+                        android:layout_toRightOf="@+id/tv_date"
                         android:text="@{viewModel.comment}"
                         tools:text="Amit Shekhar"/>
 
@@ -89,12 +90,12 @@
                 </RelativeLayout>
 
                 <TextView
-                    android:id="@+id/tv_content"
+                    android:id="@+id/tv_title"
                     style="@style/TextStyle.Title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
-                    android:text="@{viewModel.content}"
+                    android:text="@{viewModel.title}"
                     android:textStyle="normal"
                     tools:text="This repository contains a detailed sample app that implements MVP architecture using Dagger2, GreenDao, RxJava2, FastAndroidNetworking and PlaceholderView"/>
             </LinearLayout>

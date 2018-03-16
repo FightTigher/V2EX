@@ -34,7 +34,7 @@ public class TopicsViewModel extends BaseViewModel<TopicNavigator> {
         topicObservableArrayList.addAll(topics);
     }
 
-    private void fetchTopics() {
+    public void fetchTopics() {
         setIsLoading(true);
 
     }

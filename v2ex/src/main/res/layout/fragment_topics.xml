@@ -21,23 +21,21 @@
         >
 
         <android.support.v7.widget.RecyclerView
-            android:id="@+id/blogRecyclerView"
+            android:id="@+id/rcv_topics"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:adapter="@{viewModel.topicObservableArrayList}"
             tools:listitem="@layout/item_topic_view"/>
 
 
         <android.support.v4.widget.ContentLoadingProgressBar
-            android:id="@+id/topic_progress"
-            style="?android:attr/progressBarStyleLarge"
+            android:id="@+id/clp_progress"
+            style="?android:attr/progressBarStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:visibility="@{viewModel.isLoading ? View.VISIBLE : View.GONE}"
-            app:layout_constraintLeft_creator="1"
-            app:layout_constraintRight_creator="1"
             app:layout_constraintTop_toTopOf="@+id/constraintLayout"
-            />
+            tools:layout_editor_absoluteX="168dp"
+            tools:ignore="MissingConstraints"/>
 
 
     </android.support.constraint.ConstraintLayout>

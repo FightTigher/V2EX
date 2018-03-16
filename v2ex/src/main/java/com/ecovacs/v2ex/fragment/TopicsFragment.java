@@ -1,9 +1,12 @@
 package com.ecovacs.v2ex.fragment;
 
+import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProvider;
 import android.arch.lifecycle.ViewModelProviders;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v7.widget.DefaultItemAnimator;
+import android.support.v7.widget.LinearLayoutManager;
 import android.view.View;
 
 import com.ecovacs.baselibrary.base.BaseFragment;
@@ -24,12 +27,13 @@ import javax.inject.Inject;
  */
 
 public class TopicsFragment extends BaseFragment<FragmentTopicsBinding, TopicsViewModel>
-        implements TopicNavigator {
+        implements TopicNavigator, TopicAdapter.TopicAdapterListener {
 
     @Inject
     TopicAdapter mTopicAdapter;
     FragmentTopicsBinding mFragmentTopicsBinding;
-
+    @Inject
+    LinearLayoutManager mLayoutManager;
     @Inject
     ViewModelProvider.Factory mViweModelFactory;
     private TopicsViewModel mTopicsViewModel;
@@ -62,12 +66,28 @@ public class TopicsFragment extends BaseFragment<FragmentTopicsBinding, TopicsVi
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mTopicsViewModel.setNavigator(this);
+        mTopicAdapter.setListener(this);
     }
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         mFragmentTopicsBinding = getViewDataBinding();
+        setUp();
+
+        mTopicsViewModel.getTopicListLiveData().observe(this, new Observer<List<TopicBean>>() {
+            @Override
+            public void onChanged(@Nullable List<TopicBean> list) {
+                mTopicsViewModel.addTopicItemsToList(list);
+            }
+        });
+    }
+
+    private void setUp() {
+        mLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
+        mFragmentTopicsBinding.rcvTopics.setLayoutManager(mLayoutManager);
+        mFragmentTopicsBinding.rcvTopics.setItemAnimator(new DefaultItemAnimator());
+        mFragmentTopicsBinding.rcvTopics.setAdapter(mTopicAdapter);
     }
 
     @Override
@@ -77,6 +97,11 @@ public class TopicsFragment extends BaseFragment<FragmentTopicsBinding, TopicsVi
 
     @Override
     public void updateTopic(List<TopicBean> topicList) {
+        mTopicAdapter.addItems(topicList);
+    }
 
+    @Override
+    public void onRetryClick() {
+        mTopicsViewModel.fetchTopics();
     }
 }

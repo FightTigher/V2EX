@@ -10,6 +10,7 @@ project.ext {
     butterKnifeVersion = "8.5.1"
     glideVersion = "4.6.1"
     archVersion = "1.1.0"
+    timberVersion = "4.6.1"
 
     android = [
             compileSdkVersion: 26,

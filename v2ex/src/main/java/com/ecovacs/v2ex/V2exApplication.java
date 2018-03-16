@@ -3,6 +3,7 @@ package com.ecovacs.v2ex;
 import android.app.Activity;
 import android.app.Application;
 
+import com.ecovacs.baselibrary.utils.AppLogger;
 import com.ecovacs.v2ex.di.component.DaggerAppComponent;
 
 import javax.inject.Inject;
@@ -32,5 +33,7 @@ public class V2exApplication extends Application implements HasActivityInjector 
                 .application(this)
                 .build()
                 .inject(this);
+
+        AppLogger.init();
     }
 }
