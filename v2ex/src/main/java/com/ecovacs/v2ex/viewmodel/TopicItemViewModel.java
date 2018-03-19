@@ -18,7 +18,7 @@ public class TopicItemViewModel {
 
     public ObservableField<String> comment;
 
-    public ObservableField<String> type;
+    public ObservableField<String> typeTitle;
 
     public ObservableField<String> imageUrl;
 
@@ -30,11 +30,11 @@ public class TopicItemViewModel {
         mListener = listener;
         mTopic = topic;
 
-        imageUrl = new ObservableField<>(mTopic.getMember().getAvatar_mini());
+        imageUrl = new ObservableField<>("https:" + mTopic.getMember().getAvatar_normal());
         author = new ObservableField<>(mTopic.getMember().getUsername());
-        date = new ObservableField<>(mTopic.getContent_rendered());
-        comment = new ObservableField<>(mTopic.getTitle());
-        type = new ObservableField<>(mTopic.getNode().getName());
+        date = new ObservableField<>("时间" + mTopic.getLast_modified());
+        comment = new ObservableField<>("评论" + mTopic.getReplies());
+        typeTitle = new ObservableField<>(mTopic.getNode().getTitle());
         title = new ObservableField<>(mTopic.getTitle());
     }
 

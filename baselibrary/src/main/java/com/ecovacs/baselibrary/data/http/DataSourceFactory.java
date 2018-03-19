@@ -1,6 +1,7 @@
 package com.ecovacs.baselibrary.data.http;
 
 import android.os.Environment;
+import android.util.Log;
 
 import com.ecovacs.baselibrary.BuildConfig;
 
@@ -49,7 +50,7 @@ public class DataSourceFactory {
             HttpLoggingInterceptor httpLoggingInterceptor = new HttpLoggingInterceptor(new HttpLoggingInterceptor.Logger() {
                 @Override
                 public void log(String message) {
-                    // TODO: 2018/3/9 log message
+                    Log.i("v2ex data :", message);
                 }
             });
 

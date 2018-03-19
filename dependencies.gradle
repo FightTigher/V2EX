@@ -4,7 +4,7 @@ project.ext {
     retrofitVersion = "2.3.0"
     routerVersion = ""
     rxJavaVersion = "2.1.9"
-    rxAndroidVersion = "2.0.1"
+    rxAndroidVersion = "2.0.2"
     rxBindingVersion = "2.1.1"
     daggerVersion = "2.14.1"
     butterKnifeVersion = "8.5.1"

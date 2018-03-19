@@ -24,6 +24,7 @@
             android:id="@+id/rcv_topics"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            app:adapter="@{viewModel.topicObservableArrayList}"
             tools:listitem="@layout/item_topic_view"/>
 
 

@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
+import android.util.Log;
 import android.view.View;
 
 import com.ecovacs.baselibrary.base.BaseFragment;
@@ -32,7 +33,7 @@ public class TopicsFragment extends BaseFragment<FragmentTopicsBinding, TopicsVi
     @Inject
     TopicAdapter mTopicAdapter;
     FragmentTopicsBinding mFragmentTopicsBinding;
-    @Inject
+    //    @Inject
     LinearLayoutManager mLayoutManager;
     @Inject
     ViewModelProvider.Factory mViweModelFactory;
@@ -58,7 +59,6 @@ public class TopicsFragment extends BaseFragment<FragmentTopicsBinding, TopicsVi
 
     @Override
     public int getBindingVariable() {
-
         return BR.viewModel;
     }
 
@@ -67,6 +67,7 @@ public class TopicsFragment extends BaseFragment<FragmentTopicsBinding, TopicsVi
         super.onCreate(savedInstanceState);
         mTopicsViewModel.setNavigator(this);
         mTopicAdapter.setListener(this);
+        Log.e("TopicFragment","onCreate");
     }
 
     @Override
@@ -74,7 +75,6 @@ public class TopicsFragment extends BaseFragment<FragmentTopicsBinding, TopicsVi
         super.onViewCreated(view, savedInstanceState);
         mFragmentTopicsBinding = getViewDataBinding();
         setUp();
-
         mTopicsViewModel.getTopicListLiveData().observe(this, new Observer<List<TopicBean>>() {
             @Override
             public void onChanged(@Nullable List<TopicBean> list) {
@@ -84,6 +84,7 @@ public class TopicsFragment extends BaseFragment<FragmentTopicsBinding, TopicsVi
     }
 
     private void setUp() {
+        mLayoutManager = new LinearLayoutManager(getContext());
         mLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         mFragmentTopicsBinding.rcvTopics.setLayoutManager(mLayoutManager);
         mFragmentTopicsBinding.rcvTopics.setItemAnimator(new DefaultItemAnimator());
@@ -92,16 +93,20 @@ public class TopicsFragment extends BaseFragment<FragmentTopicsBinding, TopicsVi
 
     @Override
     public void handleError(Throwable throwable) {
-
+        Log.e("TopicFragment","throwable : " + throwable.toString());
     }
 
     @Override
     public void updateTopic(List<TopicBean> topicList) {
+        Log.e("TopicFragment","updateTopic");
         mTopicAdapter.addItems(topicList);
     }
 
     @Override
     public void onRetryClick() {
+        Log.e("TopicFragment","onRetryClick");
         mTopicsViewModel.fetchTopics();
     }
+
+
 }

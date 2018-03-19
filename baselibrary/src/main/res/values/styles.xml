@@ -10,19 +10,19 @@
     </style>
 
     <!--<style name="TextAppearance.Text.Regular" parent="android:TextAppearance">-->
-        <!--<item name="fontPath">fonts/source-sans-pro/SourceSansPro-Regular.ttf</item>-->
+    <!--<item name="fontPath">fonts/source-sans-pro/SourceSansPro-Regular.ttf</item>-->
     <!--</style>-->
 
     <!--<style name="TextAppearance.Text.Light" parent="android:TextAppearance">-->
-        <!--<item name="fontPath">fonts/source-sans-pro/SourceSansPro-Light.ttf</item>-->
+    <!--<item name="fontPath">fonts/source-sans-pro/SourceSansPro-Light.ttf</item>-->
     <!--</style>-->
 
     <!--<style name="TextAppearance.Text.Italic" parent="android:TextAppearance">-->
-        <!--<item name="fontPath">fonts/source-sans-pro/SourceSansPro-Light.ttf</item>-->
+    <!--<item name="fontPath">fonts/source-sans-pro/SourceSansPro-Light.ttf</item>-->
     <!--</style>-->
 
     <!--<style name="TextAppearance.Text.Bold" parent="android:TextAppearance">-->
-        <!--<item name="fontPath">fonts/source-sans-pro/SourceSansPro-Light.ttf</item>-->
+    <!--<item name="fontPath">fonts/source-sans-pro/SourceSansPro-Light.ttf</item>-->
     <!--</style>-->
 
     <style name="TextStyle.Title" parent="TextStyle">
@@ -31,6 +31,10 @@
 
     <style name="TextStyle.Title.Sub" parent="TextStyle.Title">
         <!--<item name="android:textAppearance">@style/TextAppearance.Text.Light</item>-->
+        <item name="android:textSize">16sp</item>
+    </style>
+
+    <style name="TextStyle.Title.Type" parent="TextStyle.Title">
         <item name="android:textSize">14sp</item>
     </style>
 

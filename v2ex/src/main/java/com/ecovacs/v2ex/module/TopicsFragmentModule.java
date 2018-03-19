@@ -39,9 +39,9 @@ public class TopicsFragmentModule {
         return new ViewModelProviderFactory<>(topicsViewModel);
     }
 
-    @Provides
-    LinearLayoutManager provideLinearLayoutManager(TopicsFragment fragment) {
-        return new LinearLayoutManager(fragment.getActivity());
-    }
+//    @Provides
+//    LinearLayoutManager provideLinearLayoutManager(TopicsFragment fragment) {
+//        return new LinearLayoutManager(fragment.getActivity());
+//    }
 
 }

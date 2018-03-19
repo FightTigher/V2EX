@@ -4,6 +4,7 @@ import android.databinding.BindingAdapter;
 import android.support.annotation.DrawableRes;
 import android.widget.ImageView;
 
+import com.bumptech.glide.Glide;
 import com.bumptech.glide.Priority;
 import com.bumptech.glide.request.RequestOptions;
 import com.ecovacs.baselibrary.base.GlideApp;
@@ -16,13 +17,17 @@ public class BindingUtils {
     @BindingAdapter({"imageUrl"})
     public static void setImageUrl(ImageView imageView, String imageUrl
                                    ) {
-        RequestOptions options = new RequestOptions()
-                .priority(Priority.HIGH)
-                .centerCrop();
+//        RequestOptions options = new RequestOptions()
+//                .priority(Priority.HIGH)
+//                .centerCrop();
+//
+//        GlideApp.with(imageView.getContext())
+//                .load(imageUrl)
+//                .apply(options)
+//                .into(imageView);
 
-        GlideApp.with(imageView.getContext())
+        Glide.with(imageView.getContext())
                 .load(imageUrl)
-                .apply(options)
                 .into(imageView);
 
 //        **清除缓存**:

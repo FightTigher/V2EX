@@ -5,6 +5,8 @@ import android.content.Context;
 
 import com.ecovacs.baselibrary.base.rx.AppSchedulerProvider;
 import com.ecovacs.baselibrary.base.rx.SchedulerProvider;
+import com.ecovacs.baselibrary.data.AppDataManager;
+import com.ecovacs.baselibrary.data.DataManager;
 import com.ecovacs.baselibrary.data.http.IV2exApi;
 import com.ecovacs.baselibrary.data.http.V2exApiHelper;
 import com.google.gson.Gson;
@@ -38,6 +40,12 @@ public class AppModule {
     @Singleton
     Gson provideGson(){
         return new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create();
+    }
+
+    @Provides
+    @Singleton
+    DataManager provideDataManager(AppDataManager appDataManager){
+        return appDataManager;
     }
 
     @Provides
