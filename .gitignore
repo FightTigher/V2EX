@@ -10,3 +10,14 @@
 /.idea/misc.xml
 /.idea/modules.xml
 /.idea
+/baselibrary/build
+/baselibrary/*.iml
+/v2ex/build
+/v2ex/*.iml
+/messagemodule/build
+/messagemodule/*.iml
+/opensourcelibrary/build
+/opensourcelibrary/*.iml
+/TopicsModule/build
+/TopicsModule/*.iml
+
