@@ -18,7 +18,7 @@ import java.util.List;
  * Created by liang.liu on 2018/3/15.
  */
 
-public class TopicAdapter extends RecyclerView.Adapter<BaseViewHolder> {
+public class TopicAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     public static final int VIEW_TYPE_EMPTY = 0;
 
@@ -33,7 +33,7 @@ public class TopicAdapter extends RecyclerView.Adapter<BaseViewHolder> {
     }
 
     @Override
-    public BaseViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         switch (viewType) {
             case VIEW_TYPE_NORMAL:
                 ItemTopicViewBinding topicViewBinding = ItemTopicViewBinding.inflate(
@@ -42,25 +42,29 @@ public class TopicAdapter extends RecyclerView.Adapter<BaseViewHolder> {
             case VIEW_TYPE_EMPTY:
             default:
                 ItemTopicEmptyViewBinding topicEmptyViewBinding = ItemTopicEmptyViewBinding.inflate(
-                        LayoutInflater.from(parent.getContext()),parent,false);
+                        LayoutInflater.from(parent.getContext()), parent, false);
 
                 return new EmptyViewHolder(topicEmptyViewBinding);
         }
     }
 
     @Override
-    public void onBindViewHolder(BaseViewHolder holder, int position) {
-        holder.onBind(position);
+    public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
+        if (holder instanceof TopicViewHolder) {
+            ((TopicViewHolder) holder).onBind(position);
+        } else {
+            ((EmptyViewHolder) holder).onBind(position);
+        }
     }
 
-    public void addItems(List<TopicBean> list){
+    public void addItems(List<TopicBean> list) {
         mTopicList.addAll(list);
         notifyDataSetChanged();
 
 
     }
 
-    public void clearItems(){
+    public void clearItems() {
         mTopicList.clear();
     }
 

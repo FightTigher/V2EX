@@ -23,28 +23,32 @@ android {
         }
     }
 
+    dataBinding {
+        enabled true
+    }
+
 }
 
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    compile fileTree(dir: 'libs', include: ['*.jar'])
 
     androidTestCompile('com.android.support.test.espresso:espresso-core:3.0.1', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
 
-    implementation rootProject.ext.dependencies["butterknife"]
+    // Lifecycle arch
+    compile "android.arch.lifecycle:runtime:$rootProject.ext.archVersion"
+    compile "android.arch.lifecycle:extensions:$rootProject.ext.archVersion"
+    annotationProcessor "android.arch.lifecycle:compiler:$rootProject.ext.archVersion"
+
+
+    compile rootProject.ext.dependencies["butterknife"]
     annotationProcessor rootProject.ext.dependencies["butterknife-compiler"]
 
-    implementation rootProject.ext.dependencies["rxandroid"]
-    implementation rootProject.ext.dependencies["rxjava"]
+    compile rootProject.ext.dependencies["gson"]
+    compile rootProject.ext.dependencies["ormlite-android"]
 
-    implementation rootProject.ext.dependencies["retrofit"]
-    implementation rootProject.ext.dependencies["adapter-rxjava"]
-
-    implementation rootProject.ext.dependencies["okhttp3"]
-    implementation rootProject.ext.dependencies["okhttp3-logging-interceptor"]
-
-    implementation rootProject.ext.dependencies["gson"]
-    implementation rootProject.ext.dependencies["ormlite-android"]
+    //Logger
+    compile "com.jakewharton.timber:timber:$rootProject.ext.timberVersion"
 
 }

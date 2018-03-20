@@ -9,6 +9,7 @@ import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.util.Log;
 import android.view.View;
+import android.view.animation.OvershootInterpolator;
 
 import com.ecovacs.baselibrary.base.BaseFragment;
 import com.ecovacs.baselibrary.entry.TopicBean;
@@ -22,6 +23,12 @@ import com.ecovacs.v2ex.viewmodel.TopicsViewModel;
 import java.util.List;
 
 import javax.inject.Inject;
+
+import jp.wasabeef.recyclerview.adapters.AlphaInAnimationAdapter;
+import jp.wasabeef.recyclerview.adapters.ScaleInAnimationAdapter;
+import jp.wasabeef.recyclerview.adapters.SlideInBottomAnimationAdapter;
+import jp.wasabeef.recyclerview.animators.ScaleInAnimator;
+import jp.wasabeef.recyclerview.animators.SlideInUpAnimator;
 
 /**
  * Created by liang.liu on 2018/3/14.
@@ -67,7 +74,7 @@ public class TopicsFragment extends BaseFragment<FragmentTopicsBinding, TopicsVi
         super.onCreate(savedInstanceState);
         mTopicsViewModel.setNavigator(this);
         mTopicAdapter.setListener(this);
-        Log.e("TopicFragment","onCreate");
+        Log.e("TopicFragment", "onCreate");
     }
 
     @Override
@@ -87,24 +94,30 @@ public class TopicsFragment extends BaseFragment<FragmentTopicsBinding, TopicsVi
         mLayoutManager = new LinearLayoutManager(getContext());
         mLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         mFragmentTopicsBinding.rcvTopics.setLayoutManager(mLayoutManager);
-        mFragmentTopicsBinding.rcvTopics.setItemAnimator(new DefaultItemAnimator());
-        mFragmentTopicsBinding.rcvTopics.setAdapter(mTopicAdapter);
+        AlphaInAnimationAdapter alphaAdapter = new AlphaInAnimationAdapter(mTopicAdapter);
+        alphaAdapter.setFirstOnly(false);
+        alphaAdapter.setDuration(300);
+
+        ScaleInAnimationAdapter scaleAdapter = new ScaleInAnimationAdapter(alphaAdapter, 1.1f);
+        scaleAdapter.setFirstOnly(false);
+        scaleAdapter.setDuration(300);
+        mFragmentTopicsBinding.rcvTopics.setAdapter(scaleAdapter);
     }
 
     @Override
     public void handleError(Throwable throwable) {
-        Log.e("TopicFragment","throwable : " + throwable.toString());
+        Log.e("TopicFragment", "throwable : " + throwable.toString());
     }
 
     @Override
     public void updateTopic(List<TopicBean> topicList) {
-        Log.e("TopicFragment","updateTopic");
+        Log.e("TopicFragment", "updateTopic");
         mTopicAdapter.addItems(topicList);
     }
 
     @Override
     public void onRetryClick() {
-        Log.e("TopicFragment","onRetryClick");
+        Log.e("TopicFragment", "onRetryClick");
         mTopicsViewModel.fetchTopics();
     }
 
