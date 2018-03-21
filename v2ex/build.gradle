@@ -43,7 +43,8 @@ dependencies {
     compile project (':baselibrary')
 
     implementation 'jp.wasabeef:recyclerview-animators:2.3.0'
-
+    implementation 'com.scwang.smartrefresh:SmartRefreshLayout:1.1.0-alpha-1'
+    implementation 'com.scwang.smartrefresh:SmartRefreshHeader:1.1.0-alpha-1'
 
 
     implementation "com.google.dagger:dagger:$rootProject.ext.daggerVersion"

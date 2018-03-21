@@ -4,9 +4,11 @@ import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProvider;
 import android.arch.lifecycle.ViewModelProviders;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
 import android.view.animation.OvershootInterpolator;
@@ -19,6 +21,9 @@ import com.ecovacs.v2ex.adapter.TopicAdapter;
 import com.ecovacs.v2ex.databinding.FragmentTopicsBinding;
 import com.ecovacs.v2ex.navigator.TopicNavigator;
 import com.ecovacs.v2ex.viewmodel.TopicsViewModel;
+import com.scwang.smartrefresh.header.MaterialHeader;
+import com.scwang.smartrefresh.layout.api.RefreshLayout;
+import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 
 import java.util.List;
 
@@ -102,17 +107,43 @@ public class TopicsFragment extends BaseFragment<FragmentTopicsBinding, TopicsVi
         scaleAdapter.setFirstOnly(false);
         scaleAdapter.setDuration(300);
         mFragmentTopicsBinding.rcvTopics.setAdapter(scaleAdapter);
+
+        mFragmentTopicsBinding.refreshLayout.setEnableHeaderTranslationContent(true);
+        if (((MaterialHeader)mFragmentTopicsBinding.refreshLayout.getRefreshHeader()) != null) {
+            ((MaterialHeader)mFragmentTopicsBinding.refreshLayout.getRefreshHeader()).setShowBezierWave(true);
+        }
+
+        mFragmentTopicsBinding.rcvTopics.addOnScrollListener(new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
+                super.onScrollStateChanged(recyclerView, newState);
+                if (newState == RecyclerView.SCROLL_STATE_IDLE) {
+                    int childCount = recyclerView.getChildCount();
+                    int itemCount = recyclerView.getLayoutManager().getItemCount();
+                    int firstVisibleItem = ((LinearLayoutManager) recyclerView.getLayoutManager()).findFirstVisibleItemPosition();
+
+                    if (firstVisibleItem + childCount == itemCount) {
+                        if (!mTopicsViewModel.getIsLoading().get()) {
+                            mTopicsViewModel.fetchTopics();
+                        }
+                    }
+                }
+            }
+
+        });
     }
 
     @Override
     public void handleError(Throwable throwable) {
         Log.e("TopicFragment", "throwable : " + throwable.toString());
+        mFragmentTopicsBinding.multipleStatusView.showError();
     }
 
     @Override
     public void updateTopic(List<TopicBean> topicList) {
         Log.e("TopicFragment", "updateTopic");
         mTopicAdapter.addItems(topicList);
+
     }
 
     @Override
