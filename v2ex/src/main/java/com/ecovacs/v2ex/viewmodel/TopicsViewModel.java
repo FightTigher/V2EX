@@ -41,7 +41,7 @@ public class TopicsViewModel extends BaseViewModel<TopicNavigator> {
         Log.e("TopicsViewModel","fetchTopics");
         setIsLoading(true);
         getCompositeDisposable().add(getDataManager()
-                .getLatestTopics()
+                .getTopicsByNodeName("v2ex")
                 .subscribeOn(getSchedulerProvider().io())
                 .observeOn(getSchedulerProvider().ui())
                 .subscribe(new Consumer<List<TopicBean>>() {
