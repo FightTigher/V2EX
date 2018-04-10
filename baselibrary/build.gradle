@@ -51,6 +51,7 @@ dependencies {
     compile rootProject.ext.dependencies["converter-gson"]
     compile rootProject.ext.dependencies["adapter-rxjava"]
     compile rootProject.ext.dependencies["retrofit"]
+    compile 'com.squareup.retrofit2:converter-scalars:2.3.0'
 
     compile rootProject.ext.dependencies["okhttp3"]
     compile rootProject.ext.dependencies["okhttp3-logging-interceptor"]
@@ -59,4 +60,6 @@ dependencies {
     annotationProcessor "com.google.dagger:dagger-compiler:$rootProject.ext.daggerVersion"
     annotationProcessor "com.google.dagger:dagger-android-processor:$rootProject.ext.daggerVersion"
     implementation "com.google.dagger:dagger-android-support:$rootProject.ext.daggerVersion"
+
+    implementation 'me.ghui:Fruit:1.0.4'
 }

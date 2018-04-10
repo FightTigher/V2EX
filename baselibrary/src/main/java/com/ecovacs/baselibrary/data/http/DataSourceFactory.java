@@ -4,6 +4,8 @@ import android.os.Environment;
 import android.util.Log;
 
 import com.ecovacs.baselibrary.BuildConfig;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
 import java.io.File;
 import java.util.concurrent.TimeUnit;
@@ -14,6 +16,7 @@ import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
+import retrofit2.converter.scalars.ScalarsConverterFactory;
 
 /**
  * Created by liang.liu on 2018/3/9.
@@ -76,7 +79,7 @@ public class DataSourceFactory {
             Retrofit retrofit = new Retrofit.Builder()
                     .baseUrl(apiUrl)
                     .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-                    .addConverterFactory(GsonConverterFactory.create())
+                    .addConverterFactory(ScalarsConverterFactory.create())
                     .client(client)
                     .build();
 

@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
 import com.ecovacs.baselibrary.base.BaseViewHolder;
+import com.ecovacs.baselibrary.data.http.bean.TopicStartInfo;
 import com.ecovacs.baselibrary.entry.TopicBean;
 import com.ecovacs.baselibrary.utils.AppLogger;
 import com.ecovacs.v2ex.databinding.ItemTopicEmptyViewBinding;
@@ -24,11 +25,11 @@ public class TopicAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
 
     public static final int VIEW_TYPE_NORMAL = 1;
 
-    private List<TopicBean> mTopicList;
+    private List<TopicStartInfo.Item> mTopicList;
 
     private TopicAdapterListener mListener;
 
-    public TopicAdapter(List<TopicBean> topicList) {
+    public TopicAdapter(List<TopicStartInfo.Item> topicList) {
         mTopicList = topicList;
     }
 
@@ -57,11 +58,9 @@ public class TopicAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
         }
     }
 
-    public void addItems(List<TopicBean> list) {
+    public void addItems(List<TopicStartInfo.Item> list) {
         mTopicList.addAll(list);
         notifyDataSetChanged();
-
-
     }
 
     public void clearItems() {
@@ -106,7 +105,7 @@ public class TopicAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
 
         @Override
         public void onBind(int position) {
-            TopicBean topicBean = mTopicList.get(position);
+            TopicStartInfo.Item topicBean = mTopicList.get(position);
 
             mTopicItemViewModel = new TopicItemViewModel(this, topicBean);
             mBinding.setViewModel(mTopicItemViewModel);

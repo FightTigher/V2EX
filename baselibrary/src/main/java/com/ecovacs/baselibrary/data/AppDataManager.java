@@ -4,6 +4,7 @@ import android.content.Context;
 
 import com.ecovacs.baselibrary.data.http.IV2exApi;
 import com.ecovacs.baselibrary.data.http.V2exApiHelper;
+import com.ecovacs.baselibrary.data.http.bean.TopicInfo;
 import com.ecovacs.baselibrary.entry.MemberInfoBean;
 import com.ecovacs.baselibrary.entry.RepliesBean;
 import com.ecovacs.baselibrary.entry.SiteInfoBean;
@@ -12,6 +13,7 @@ import com.ecovacs.baselibrary.entry.TableBean;
 import com.ecovacs.baselibrary.entry.TopicBean;
 import com.ecovacs.baselibrary.utils.SPUtils;
 import com.google.gson.Gson;
+import com.google.gson.JsonElement;
 
 import java.util.List;
 
@@ -112,5 +114,10 @@ public class AppDataManager implements DataManager {
     @Override
     public Single<List<RepliesBean>> getReplies(String topic_id) {
         return iv2exApi.getReplies(topic_id);
+    }
+
+    @Override
+    public Single<String> getTopicsByNode(String tab) {
+        return iv2exApi.getTopicsByNode(tab);
     }
 }

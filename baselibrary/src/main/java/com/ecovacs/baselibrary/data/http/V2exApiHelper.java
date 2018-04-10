@@ -1,11 +1,13 @@
 package com.ecovacs.baselibrary.data.http;
 
+import com.ecovacs.baselibrary.data.http.bean.TopicInfo;
 import com.ecovacs.baselibrary.entry.MemberInfoBean;
 import com.ecovacs.baselibrary.entry.RepliesBean;
 import com.ecovacs.baselibrary.entry.SiteInfoBean;
 import com.ecovacs.baselibrary.entry.SiteStatsBean;
 import com.ecovacs.baselibrary.entry.TableBean;
 import com.ecovacs.baselibrary.entry.TopicBean;
+import com.google.gson.JsonElement;
 
 import java.util.List;
 
@@ -97,5 +99,10 @@ public class V2exApiHelper implements IV2exApi {
     @Override
     public Single<List<RepliesBean>> getReplies(String topic_id) {
         return v2exApi.getReplies(topic_id);
+    }
+
+    @Override
+    public Single<String> getTopicsByNode(String tab) {
+        return v2exApi.getTopicsByNode(tab);
     }
 }

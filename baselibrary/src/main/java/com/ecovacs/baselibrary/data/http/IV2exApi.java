@@ -1,11 +1,13 @@
 package com.ecovacs.baselibrary.data.http;
 
+import com.ecovacs.baselibrary.data.http.bean.TopicInfo;
 import com.ecovacs.baselibrary.entry.MemberInfoBean;
 import com.ecovacs.baselibrary.entry.RepliesBean;
 import com.ecovacs.baselibrary.entry.SiteInfoBean;
 import com.ecovacs.baselibrary.entry.SiteStatsBean;
 import com.ecovacs.baselibrary.entry.TableBean;
 import com.ecovacs.baselibrary.entry.TopicBean;
+import com.google.gson.JsonElement;
 
 import java.util.List;
 
@@ -63,7 +65,8 @@ public interface IV2exApi {
     @GET("/api/replies/show.json")
     Single<List<RepliesBean>>  getReplies(@Query("topic_id") String topic_id);
 
-
+    @GET("/")
+    Single<String> getTopicsByNode(@Query("tab") String tab);
 
 
 

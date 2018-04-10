@@ -14,6 +14,7 @@ import android.view.View;
 import android.view.animation.OvershootInterpolator;
 
 import com.ecovacs.baselibrary.base.BaseFragment;
+import com.ecovacs.baselibrary.data.http.bean.TopicStartInfo;
 import com.ecovacs.baselibrary.entry.TopicBean;
 import com.ecovacs.v2ex.BR;
 import com.ecovacs.v2ex.R;
@@ -87,9 +88,9 @@ public class TopicsFragment extends BaseFragment<FragmentTopicsBinding, TopicsVi
         super.onViewCreated(view, savedInstanceState);
         mFragmentTopicsBinding = getViewDataBinding();
         setUp();
-        mTopicsViewModel.getTopicListLiveData().observe(this, new Observer<List<TopicBean>>() {
+        mTopicsViewModel.getTopicListLiveData().observe(this, new Observer<List<TopicStartInfo.Item>>() {
             @Override
-            public void onChanged(@Nullable List<TopicBean> list) {
+            public void onChanged(@Nullable List<TopicStartInfo.Item> list) {
                 mTopicsViewModel.addTopicItemsToList(list);
             }
         });
@@ -112,6 +113,13 @@ public class TopicsFragment extends BaseFragment<FragmentTopicsBinding, TopicsVi
         if (((MaterialHeader)mFragmentTopicsBinding.refreshLayout.getRefreshHeader()) != null) {
             ((MaterialHeader)mFragmentTopicsBinding.refreshLayout.getRefreshHeader()).setShowBezierWave(true);
         }
+
+        mFragmentTopicsBinding.refreshLayout.setOnRefreshListener(new OnRefreshListener() {
+            @Override
+            public void onRefresh(@NonNull RefreshLayout refreshLayout) {
+                mTopicsViewModel.fetchTopics();
+            }
+        });
 
         mFragmentTopicsBinding.rcvTopics.addOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override
@@ -140,8 +148,8 @@ public class TopicsFragment extends BaseFragment<FragmentTopicsBinding, TopicsVi
     }
 
     @Override
-    public void updateTopic(List<TopicBean> topicList) {
-        Log.e("TopicFragment", "updateTopic");
+    public void loadMoreTopics(List<TopicStartInfo.Item> topicList) {
+        Log.e("TopicFragment", "loadMoreTopics");
         mTopicAdapter.addItems(topicList);
 
     }
@@ -151,6 +159,8 @@ public class TopicsFragment extends BaseFragment<FragmentTopicsBinding, TopicsVi
         Log.e("TopicFragment", "onRetryClick");
         mTopicsViewModel.fetchTopics();
     }
+
+
 
 
 }

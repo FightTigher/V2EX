@@ -2,6 +2,7 @@ package com.ecovacs.v2ex.viewmodel;
 
 import android.databinding.ObservableField;
 
+import com.ecovacs.baselibrary.data.http.bean.TopicStartInfo;
 import com.ecovacs.baselibrary.entry.TopicBean;
 
 /**
@@ -24,22 +25,22 @@ public class TopicItemViewModel {
 
     public TopicItemViewModelListener mListener;
 
-    private TopicBean mTopic;
+    private TopicStartInfo.Item mTopic;
 
-    public TopicItemViewModel(TopicItemViewModelListener listener, TopicBean topic) {
+    public TopicItemViewModel(TopicItemViewModelListener listener, TopicStartInfo.Item topic) {
         mListener = listener;
         mTopic = topic;
 
-        imageUrl = new ObservableField<>("https:" + mTopic.getMember().getAvatar_normal());
-        author = new ObservableField<>(mTopic.getMember().getUsername());
-        date = new ObservableField<>("时间" + mTopic.getLast_modified());
-        comment = new ObservableField<>("评论" + mTopic.getReplies());
-        typeTitle = new ObservableField<>(mTopic.getNode().getTitle());
+        imageUrl = new ObservableField<>(mTopic.getAvatar());
+        author = new ObservableField<>(mTopic.getUserName());
+        date = new ObservableField<>(mTopic.getTime());
+        comment = new ObservableField<>("评论" + mTopic.getCommentNum());
+        typeTitle = new ObservableField<>(mTopic.getTag());
         title = new ObservableField<>(mTopic.getTitle());
     }
 
     public void onItemClick() {
-        mListener.onItemClick(mTopic.getId());
+        mListener.onItemClick(0);
     }
 
     public interface TopicItemViewModelListener {
