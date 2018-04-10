@@ -40,7 +40,7 @@ public class BindingUtils {
 //                }
     }
 
-    @BindingAdapter({"mIsLoading"})
+    @BindingAdapter({"isLoading"})
     public static void showLoading(SmartRefreshLayout smartRefreshLayout, boolean loading) {
         if (!loading) {
             smartRefreshLayout.finishRefresh();

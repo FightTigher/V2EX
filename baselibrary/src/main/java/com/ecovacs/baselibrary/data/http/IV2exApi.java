@@ -39,10 +39,10 @@ public interface IV2exApi {
     Single<List<TableBean>> getAllTableInfo();   //获取全部节点信息
 
     @GET("/api/members/show.json")
-    Single<MemberInfoBean>  getMemberInfoById(@Query("id") String id);   //（id 参数必须）通过用户 id 获取用户信息
+    Single<MemberInfoBean> getMemberInfoById(@Query("id") String id);   //（id 参数必须）通过用户 id 获取用户信息
 
     @GET("/api/members/show.json")
-    Single<MemberInfoBean>  getMemberInfoByUserName(@Query("username") String username);   //（username 参数必须）通过用户名称获取用户信息
+    Single<MemberInfoBean> getMemberInfoByUserName(@Query("username") String username);   //（username 参数必须）通过用户名称获取用户信息
 
     @GET("/api/topics/latest.json")
     Single<List<TopicBean>> getLatestTopics();
@@ -63,11 +63,14 @@ public interface IV2exApi {
     Single<List<TopicBean>> getTopicsByNodeId(@Query("node_id") String node_id);   //（id 参数必须） 通过节点 id 获取该节点下的主题列表
 
     @GET("/api/replies/show.json")
-    Single<List<RepliesBean>>  getReplies(@Query("topic_id") String topic_id);
+    Single<List<RepliesBean>> getReplies(@Query("topic_id") String topic_id);
 
     @GET("/")
     Single<String> getTopicsByNode(@Query("tab") String tab);
 
+    @GET("/")
+    Single<String> loadMoreTopicsByNode(@Query("tab") String tab,
+                                        @Query("p") String p);
 
 
 }

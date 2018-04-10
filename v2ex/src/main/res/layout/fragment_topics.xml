@@ -23,7 +23,7 @@
             android:id="@+id/refreshLayout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:mIsLoading="@{viewModel.mIsLoading}"
+            app:isLoading="@{viewModel.isLoading}"
             app:srlAccentColor="@android:color/white"
             app:srlEnableHeaderTranslationContent="false"
             app:srlPrimaryColor="@color/colorPrimary">

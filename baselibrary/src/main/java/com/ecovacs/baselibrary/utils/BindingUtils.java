@@ -21,7 +21,7 @@ public class BindingUtils {
         RequestOptions options = new RequestOptions()
                 .centerCrop()
                 .priority(Priority.HIGH)
-                .diskCacheStrategy(DiskCacheStrategy.NONE)//缓存策略
+                .diskCacheStrategy(DiskCacheStrategy.RESOURCE)//缓存策略
                 .transform(new GlideRoundTransform());
 
         Glide.with(imageView.getContext())

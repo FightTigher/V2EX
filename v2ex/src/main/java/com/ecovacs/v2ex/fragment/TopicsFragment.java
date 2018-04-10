@@ -6,16 +6,13 @@ import android.arch.lifecycle.ViewModelProviders;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
-import android.view.animation.OvershootInterpolator;
 
 import com.ecovacs.baselibrary.base.BaseFragment;
 import com.ecovacs.baselibrary.data.http.bean.TopicStartInfo;
-import com.ecovacs.baselibrary.entry.TopicBean;
 import com.ecovacs.v2ex.BR;
 import com.ecovacs.v2ex.R;
 import com.ecovacs.v2ex.adapter.TopicAdapter;
@@ -32,9 +29,7 @@ import javax.inject.Inject;
 
 import jp.wasabeef.recyclerview.adapters.AlphaInAnimationAdapter;
 import jp.wasabeef.recyclerview.adapters.ScaleInAnimationAdapter;
-import jp.wasabeef.recyclerview.adapters.SlideInBottomAnimationAdapter;
-import jp.wasabeef.recyclerview.animators.ScaleInAnimator;
-import jp.wasabeef.recyclerview.animators.SlideInUpAnimator;
+
 
 /**
  * Created by liang.liu on 2018/3/14.

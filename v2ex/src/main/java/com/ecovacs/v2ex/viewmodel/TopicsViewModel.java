@@ -28,7 +28,7 @@ public class TopicsViewModel extends BaseViewModel<TopicNavigator> {
 
     private ObservableList<TopicStartInfo.Item> topicObservableArrayList = new ObservableArrayList<>();
 
-    private ObservableBoolean mIsLoading = new ObservableBoolean(false);
+    private ObservableBoolean isLoading = new ObservableBoolean(false);
 
     private MutableLiveData<List<TopicStartInfo.Item>> topicListLiveData;
 
@@ -55,7 +55,6 @@ public class TopicsViewModel extends BaseViewModel<TopicNavigator> {
                     @Override
                     public void accept(String s) throws Exception {
                         TopicStartInfo topicStartInfo = new Fruit().fromHtml(s, TopicStartInfo.class);
-                        Log.e("ssss", topicStartInfo.getTotal() + "");
                         List<TopicStartInfo.Item> list = topicStartInfo.getItems();
                         if (list != null) {
                             topicListLiveData.setValue(list);
@@ -65,24 +64,16 @@ public class TopicsViewModel extends BaseViewModel<TopicNavigator> {
                 }, new Consumer<Throwable>() {
                     @Override
                     public void accept(Throwable throwable) throws Exception {
-                        Log.e("topics", throwable.getMessage());
+                        setIsLoading(false);
+                        getNavigator().handleError(throwable);
                     }
                 }));
-//                .subscribe(new Consumer<List<TopicBean>>() {
-//                    @Override
-//                    public void accept(List<TopicBean> list) throws Exception {
-//                        if (list != null) {
-//                            topicListLiveData.setValue(list);
-//                        }
-//                        setIsLoading(false);
-//                    }
-//                }, new Consumer<Throwable>() {
-//                    @Override
-//                    public void accept(Throwable throwable) throws Exception {
-//                        setIsLoading(false);
-//                        getNavigator().handleError(throwable);
-//                    }
-//                }));
+
+    }
+
+    public void loadMoreTopics() {
+        setIsLoading(true);
+        getCompositeDisposable().add(getDataManager().)
     }
 
     public ObservableList<TopicStartInfo.Item> getTopicObservableArrayList() {
@@ -94,10 +85,10 @@ public class TopicsViewModel extends BaseViewModel<TopicNavigator> {
     }
 
     public ObservableBoolean getIsLoading() {
-        return mIsLoading;
+        return isLoading;
     }
 
     public void setIsLoading(boolean isLoading) {
-        mIsLoading.set(isLoading);
+        this.isLoading.set(isLoading);
     }
 }
