@@ -9,11 +9,8 @@ import android.util.Log;
 import com.ecovacs.baselibrary.base.BaseViewModel;
 import com.ecovacs.baselibrary.base.rx.SchedulerProvider;
 import com.ecovacs.baselibrary.data.DataManager;
-import com.ecovacs.baselibrary.data.http.bean.TopicInfo;
 import com.ecovacs.baselibrary.data.http.bean.TopicStartInfo;
-import com.ecovacs.baselibrary.entry.TopicBean;
-import com.ecovacs.v2ex.navigator.TopicNavigator;
-import com.google.gson.JsonElement;
+import com.ecovacs.v2ex.navigator.TopicsNavigator;
 
 import java.util.List;
 
@@ -24,7 +21,7 @@ import me.ghui.fruit.Fruit;
  * Created by liang.liu on 2018/3/15.
  */
 
-public class TopicsViewModel extends BaseViewModel<TopicNavigator> {
+public class TopicsViewModel extends BaseViewModel<TopicsNavigator> {
 
     private ObservableList<TopicStartInfo.Item> topicObservableArrayList = new ObservableArrayList<>();
 
@@ -73,7 +70,7 @@ public class TopicsViewModel extends BaseViewModel<TopicNavigator> {
 
     public void loadMoreTopics() {
         setIsLoading(true);
-        getCompositeDisposable().add(getDataManager().)
+
     }
 
     public ObservableList<TopicStartInfo.Item> getTopicObservableArrayList() {

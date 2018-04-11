@@ -3,8 +3,7 @@ package com.ecovacs.baselibrary.data;
 import android.content.Context;
 
 import com.ecovacs.baselibrary.data.http.IV2exApi;
-import com.ecovacs.baselibrary.data.http.V2exApiHelper;
-import com.ecovacs.baselibrary.data.http.bean.TopicInfo;
+//import com.ecovacs.baselibrary.data.http.V2exApiHelper;
 import com.ecovacs.baselibrary.entry.MemberInfoBean;
 import com.ecovacs.baselibrary.entry.RepliesBean;
 import com.ecovacs.baselibrary.entry.SiteInfoBean;
@@ -119,5 +118,15 @@ public class AppDataManager implements DataManager {
     @Override
     public Single<String> getTopicsByNode(String tab) {
         return iv2exApi.getTopicsByNode(tab);
+    }
+
+    @Override
+    public Single<String> loadMoreTopicsByNode(String tab, String p) {
+        return null;
+    }
+
+    @Override
+    public Single<String> getNodes() {
+        return null;
     }
 }

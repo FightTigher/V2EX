@@ -15,9 +15,9 @@ import com.ecovacs.baselibrary.base.BaseFragment;
 import com.ecovacs.baselibrary.data.http.bean.TopicStartInfo;
 import com.ecovacs.v2ex.BR;
 import com.ecovacs.v2ex.R;
-import com.ecovacs.v2ex.adapter.TopicAdapter;
+import com.ecovacs.v2ex.adapter.TopicsAdapter;
 import com.ecovacs.v2ex.databinding.FragmentTopicsBinding;
-import com.ecovacs.v2ex.navigator.TopicNavigator;
+import com.ecovacs.v2ex.navigator.TopicsNavigator;
 import com.ecovacs.v2ex.viewmodel.TopicsViewModel;
 import com.scwang.smartrefresh.header.MaterialHeader;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
@@ -36,10 +36,10 @@ import jp.wasabeef.recyclerview.adapters.ScaleInAnimationAdapter;
  */
 
 public class TopicsFragment extends BaseFragment<FragmentTopicsBinding, TopicsViewModel>
-        implements TopicNavigator, TopicAdapter.TopicAdapterListener {
+        implements TopicsNavigator, TopicsAdapter.TopicAdapterListener {
 
     @Inject
-    TopicAdapter mTopicAdapter;
+    TopicsAdapter mTopicAdapter;
     FragmentTopicsBinding mFragmentTopicsBinding;
     //    @Inject
     LinearLayoutManager mLayoutManager;

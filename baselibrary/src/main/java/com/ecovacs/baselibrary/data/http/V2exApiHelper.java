@@ -105,4 +105,14 @@ public class V2exApiHelper implements IV2exApi {
     public Single<String> getTopicsByNode(String tab) {
         return v2exApi.getTopicsByNode(tab);
     }
+
+    @Override
+    public Single<String> loadMoreTopicsByNode(String tab, String p) {
+        return null;
+    }
+
+    @Override
+    public Single<String> getNodes() {
+        return null;
+    }
 }

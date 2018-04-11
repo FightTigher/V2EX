@@ -4,15 +4,13 @@ import android.databinding.BindingAdapter;
 import android.support.v7.widget.RecyclerView;
 
 import com.ecovacs.baselibrary.data.http.bean.TopicStartInfo;
-import com.ecovacs.baselibrary.entry.TopicBean;
-import com.ecovacs.v2ex.adapter.TopicAdapter;
+import com.ecovacs.v2ex.adapter.TopicsAdapter;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 
 import java.util.List;
 
 import jp.wasabeef.recyclerview.adapters.AlphaInAnimationAdapter;
 import jp.wasabeef.recyclerview.adapters.ScaleInAnimationAdapter;
-import jp.wasabeef.recyclerview.adapters.SlideInBottomAnimationAdapter;
 
 /**
  * Created by liang.liu on 2018/3/16.
@@ -26,14 +24,14 @@ public class BindingUtils {
         if (scaleInAnimationAdapter != null) {
             AlphaInAnimationAdapter alphaInAnimationAdapter = (AlphaInAnimationAdapter) scaleInAnimationAdapter.getWrappedAdapter();
             if (alphaInAnimationAdapter != null) {
-                TopicAdapter topicAdapter = (TopicAdapter) alphaInAnimationAdapter.getWrappedAdapter();
+                TopicsAdapter topicAdapter = (TopicsAdapter) alphaInAnimationAdapter.getWrappedAdapter();
                 if (topicAdapter != null) {
                     topicAdapter.clearItems();
                     topicAdapter.addItems(topics);
                 }
             }
         }
-//        TopicAdapter topicAdapter = (TopicAdapter) recyclerView.getAdapter();
+//        TopicsAdapter topicAdapter = (TopicsAdapter) recyclerView.getAdapter();
 //                if (topicAdapter != null) {
 //                    topicAdapter.clearItems();
 //                    topicAdapter.addItems(topics);
@@ -45,6 +43,11 @@ public class BindingUtils {
         if (!loading) {
             smartRefreshLayout.finishRefresh();
         }
+    }
+
+    @BindingAdapter({"nodes"})
+    public static void showNodesData(RecyclerView recyclerView, List<TopicStartInfo.Item> nodes) {
+
     }
 
 }

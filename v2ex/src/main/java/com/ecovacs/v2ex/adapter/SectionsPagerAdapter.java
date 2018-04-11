@@ -4,6 +4,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
+import com.ecovacs.v2ex.fragment.NodesFragment;
 import com.ecovacs.v2ex.fragment.TopicsFragment;
 
 /**
@@ -17,7 +18,13 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
 
     @Override
     public Fragment getItem(int position) {
-        return TopicsFragment.newInstance();
+        if (position == 0) {
+            return TopicsFragment.newInstance();
+        } else if (position == 1) {
+            return NodesFragment.newInstance();
+        } else {
+            return NodesFragment.newInstance();
+        }
     }
 
     @Override

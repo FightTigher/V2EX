@@ -1,15 +1,12 @@
 package com.ecovacs.v2ex.module;
 
 import android.arch.lifecycle.ViewModelProvider;
-import android.support.v7.widget.LinearLayoutManager;
 
 import com.ecovacs.baselibrary.base.rx.SchedulerProvider;
 import com.ecovacs.baselibrary.data.DataManager;
 import com.ecovacs.baselibrary.data.http.bean.TopicStartInfo;
-import com.ecovacs.baselibrary.entry.TopicBean;
 import com.ecovacs.v2ex.ViewModelProviderFactory;
-import com.ecovacs.v2ex.adapter.TopicAdapter;
-import com.ecovacs.v2ex.fragment.TopicsFragment;
+import com.ecovacs.v2ex.adapter.TopicsAdapter;
 import com.ecovacs.v2ex.viewmodel.TopicsViewModel;
 
 import java.util.ArrayList;
@@ -31,8 +28,8 @@ public class TopicsFragmentModule {
     }
 
     @Provides
-    TopicAdapter provideTopicAdapter(){
-        return new TopicAdapter(new ArrayList<TopicStartInfo.Item>());
+    TopicsAdapter provideTopicAdapter(){
+        return new TopicsAdapter(new ArrayList<TopicStartInfo.Item>());
     }
 
     @Provides

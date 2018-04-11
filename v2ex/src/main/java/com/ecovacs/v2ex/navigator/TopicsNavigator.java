@@ -9,7 +9,7 @@ import java.util.List;
  * Created by liang.liu on 2018/3/15.
  */
 
-public interface TopicNavigator {
+public interface TopicsNavigator {
 
     void handleError(Throwable throwable);
 

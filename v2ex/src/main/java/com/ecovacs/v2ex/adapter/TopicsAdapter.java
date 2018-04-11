@@ -19,7 +19,7 @@ import java.util.List;
  * Created by liang.liu on 2018/3/15.
  */
 
-public class TopicAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
+public class TopicsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     public static final int VIEW_TYPE_EMPTY = 0;
 
@@ -29,7 +29,7 @@ public class TopicAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
 
     private TopicAdapterListener mListener;
 
-    public TopicAdapter(List<TopicStartInfo.Item> topicList) {
+    public TopicsAdapter(List<TopicStartInfo.Item> topicList) {
         mTopicList = topicList;
     }
 
