@@ -6,10 +6,10 @@ import android.databinding.ObservableBoolean;
 import android.databinding.ObservableList;
 import android.util.Log;
 
-import com.ecovacs.baselibrary.base.BaseViewModel;
 import com.ecovacs.baselibrary.base.rx.SchedulerProvider;
-import com.ecovacs.baselibrary.data.DataManager;
-import com.ecovacs.baselibrary.data.http.bean.TopicStartInfo;
+import com.ecovacs.data.BaseViewModel;
+import com.ecovacs.data.DataManager;
+import com.ecovacs.data.bean.TopicStartInfo;
 import com.ecovacs.v2ex.navigator.TopicsNavigator;
 
 import java.util.List;
@@ -42,7 +42,6 @@ public class TopicsViewModel extends BaseViewModel<TopicsNavigator> {
     }
 
     public void fetchTopics() {
-        Log.e("TopicsViewModel", "fetchTopics");
         setIsLoading(true);
         getCompositeDisposable().add(getDataManager()
                 .getTopicsByNode("all")
@@ -55,6 +54,10 @@ public class TopicsViewModel extends BaseViewModel<TopicsNavigator> {
                         List<TopicStartInfo.Item> list = topicStartInfo.getItems();
                         if (list != null) {
                             topicListLiveData.setValue(list);
+                        } else {
+                            if (topicListLiveData.getValue() == null) {
+                                getNavigator().showEmpty();
+                            }
                         }
                         setIsLoading(false);
                     }
@@ -70,7 +73,6 @@ public class TopicsViewModel extends BaseViewModel<TopicsNavigator> {
 
     public void loadMoreTopics() {
         setIsLoading(true);
-
     }
 
     public ObservableList<TopicStartInfo.Item> getTopicObservableArrayList() {

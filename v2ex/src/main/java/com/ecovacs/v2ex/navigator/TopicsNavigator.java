@@ -1,7 +1,7 @@
 package com.ecovacs.v2ex.navigator;
 
-import com.ecovacs.baselibrary.data.http.bean.TopicStartInfo;
-import com.ecovacs.baselibrary.entry.TopicBean;
+
+import com.ecovacs.data.bean.TopicStartInfo;
 
 import java.util.List;
 
@@ -10,6 +10,12 @@ import java.util.List;
  */
 
 public interface TopicsNavigator {
+
+    void showEmpty();
+
+    void showLoading();
+
+    void noNetWork();
 
     void handleError(Throwable throwable);
 

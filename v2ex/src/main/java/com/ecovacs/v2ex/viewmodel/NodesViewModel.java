@@ -4,19 +4,21 @@ import android.arch.lifecycle.MutableLiveData;
 import android.databinding.ObservableArrayList;
 import android.databinding.ObservableList;
 
-import com.ecovacs.baselibrary.base.BaseViewModel;
 import com.ecovacs.baselibrary.base.rx.SchedulerProvider;
-import com.ecovacs.baselibrary.data.DataManager;
-import com.ecovacs.baselibrary.data.http.bean.TopicStartInfo;
+import com.ecovacs.data.BaseViewModel;
+import com.ecovacs.data.DataManager;
+import com.ecovacs.data.bean.TopicStartInfo;
 import com.ecovacs.v2ex.navigator.NodesNavigator;
 
 import java.util.List;
+
+import io.reactivex.functions.Consumer;
 
 /**
  * Created by liang.liu on 2018/4/11.
  */
 
-public class NodesViewModel extends BaseViewModel<NodesNavigator>{
+public class NodesViewModel extends BaseViewModel<NodesNavigator> {
 
     private ObservableList<TopicStartInfo.Item> nodesObservableArrayList = new ObservableArrayList<>();
 
@@ -25,6 +27,20 @@ public class NodesViewModel extends BaseViewModel<NodesNavigator>{
     public NodesViewModel(DataManager dataManager, SchedulerProvider schedulerProvider) {
         super(dataManager, schedulerProvider);
         nodesLiveData = new MutableLiveData<>();
+
+    }
+
+    public void fetchNodes() {
+
+        getCompositeDisposable().add(getDataManager().getNodes()
+                .subscribeOn(getSchedulerProvider().io())
+                .observeOn(getSchedulerProvider().ui())
+                .subscribe(new Consumer<String>() {
+                    @Override
+                    public void accept(String data) throws Exception {
+
+                    }
+                }));
     }
 
 

@@ -2,8 +2,8 @@ package com.ecovacs.v2ex.viewmodel;
 
 import android.databinding.ObservableField;
 
-import com.ecovacs.baselibrary.data.http.bean.TopicStartInfo;
-import com.ecovacs.baselibrary.entry.TopicBean;
+import com.ecovacs.data.bean.TopicStartInfo;
+
 
 /**
  * Created by liang.liu on 2018/3/15.

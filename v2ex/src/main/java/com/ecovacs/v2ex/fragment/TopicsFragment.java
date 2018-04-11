@@ -11,8 +11,8 @@ import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
 
-import com.ecovacs.baselibrary.base.BaseFragment;
-import com.ecovacs.baselibrary.data.http.bean.TopicStartInfo;
+import com.ecovacs.data.BaseFragment;
+import com.ecovacs.data.bean.TopicStartInfo;
 import com.ecovacs.v2ex.BR;
 import com.ecovacs.v2ex.R;
 import com.ecovacs.v2ex.adapter.TopicsAdapter;
@@ -83,9 +83,11 @@ public class TopicsFragment extends BaseFragment<FragmentTopicsBinding, TopicsVi
         super.onViewCreated(view, savedInstanceState);
         mFragmentTopicsBinding = getViewDataBinding();
         setUp();
+        showLoading();
         mTopicsViewModel.getTopicListLiveData().observe(this, new Observer<List<TopicStartInfo.Item>>() {
             @Override
             public void onChanged(@Nullable List<TopicStartInfo.Item> list) {
+                mFragmentTopicsBinding.multipleStatusView.showContent();
                 mTopicsViewModel.addTopicItemsToList(list);
             }
         });
@@ -137,6 +139,21 @@ public class TopicsFragment extends BaseFragment<FragmentTopicsBinding, TopicsVi
     }
 
     @Override
+    public void showEmpty() {
+        mFragmentTopicsBinding.multipleStatusView.showEmpty();
+    }
+
+    @Override
+    public void showLoading() {
+        mFragmentTopicsBinding.multipleStatusView.showLoading();
+    }
+
+    @Override
+    public void noNetWork() {
+        mFragmentTopicsBinding.multipleStatusView.showNoNetwork();
+    }
+
+    @Override
     public void handleError(Throwable throwable) {
         Log.e("TopicFragment", "throwable : " + throwable.toString());
         mFragmentTopicsBinding.multipleStatusView.showError();
@@ -154,8 +171,5 @@ public class TopicsFragment extends BaseFragment<FragmentTopicsBinding, TopicsVi
         Log.e("TopicFragment", "onRetryClick");
         mTopicsViewModel.fetchTopics();
     }
-
-
-
 
 }

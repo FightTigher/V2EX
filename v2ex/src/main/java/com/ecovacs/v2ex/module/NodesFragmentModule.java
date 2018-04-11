@@ -1,10 +1,9 @@
 package com.ecovacs.v2ex.module;
 
 import android.arch.lifecycle.ViewModelProvider;
-import android.arch.lifecycle.ViewModelProviders;
 
 import com.ecovacs.baselibrary.base.rx.SchedulerProvider;
-import com.ecovacs.baselibrary.data.DataManager;
+import com.ecovacs.data.DataManager;
 import com.ecovacs.v2ex.ViewModelProviderFactory;
 import com.ecovacs.v2ex.adapter.NodesAdapter;
 import com.ecovacs.v2ex.viewmodel.NodesViewModel;

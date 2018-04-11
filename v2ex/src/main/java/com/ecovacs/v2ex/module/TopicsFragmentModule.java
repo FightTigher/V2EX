@@ -3,8 +3,8 @@ package com.ecovacs.v2ex.module;
 import android.arch.lifecycle.ViewModelProvider;
 
 import com.ecovacs.baselibrary.base.rx.SchedulerProvider;
-import com.ecovacs.baselibrary.data.DataManager;
-import com.ecovacs.baselibrary.data.http.bean.TopicStartInfo;
+import com.ecovacs.data.DataManager;
+import com.ecovacs.data.bean.TopicStartInfo;
 import com.ecovacs.v2ex.ViewModelProviderFactory;
 import com.ecovacs.v2ex.adapter.TopicsAdapter;
 import com.ecovacs.v2ex.viewmodel.TopicsViewModel;

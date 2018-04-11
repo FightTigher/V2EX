@@ -20,4 +20,8 @@
 /opensourcelibrary/*.iml
 /TopicsModule/build
 /TopicsModule/*.iml
+/NodeModule/build
+/NodeModule/*.iml
+/DataLibrary/build
+/DataLibrary/*.iml
 

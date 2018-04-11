@@ -5,9 +5,8 @@ import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
 import com.ecovacs.baselibrary.base.BaseViewHolder;
-import com.ecovacs.baselibrary.data.http.bean.TopicStartInfo;
-import com.ecovacs.baselibrary.entry.TopicBean;
 import com.ecovacs.baselibrary.utils.AppLogger;
+import com.ecovacs.data.bean.TopicStartInfo;
 import com.ecovacs.v2ex.databinding.ItemTopicEmptyViewBinding;
 import com.ecovacs.v2ex.databinding.ItemTopicViewBinding;
 import com.ecovacs.v2ex.viewmodel.TopicItemEmptyViewModel;
@@ -21,9 +20,9 @@ import java.util.List;
 
 public class TopicsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
-    public static final int VIEW_TYPE_EMPTY = 0;
-
-    public static final int VIEW_TYPE_NORMAL = 1;
+//    public static final int VIEW_TYPE_EMPTY = 0;
+//
+//    public static final int VIEW_TYPE_NORMAL = 1;
 
     private List<TopicStartInfo.Item> mTopicList;
 
@@ -35,27 +34,31 @@ public class TopicsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
 
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        switch (viewType) {
-            case VIEW_TYPE_NORMAL:
-                ItemTopicViewBinding topicViewBinding = ItemTopicViewBinding.inflate(
-                        LayoutInflater.from(parent.getContext()), parent, false);
-                return new TopicViewHolder(topicViewBinding);
-            case VIEW_TYPE_EMPTY:
-            default:
-                ItemTopicEmptyViewBinding topicEmptyViewBinding = ItemTopicEmptyViewBinding.inflate(
-                        LayoutInflater.from(parent.getContext()), parent, false);
+//        switch (viewType) {
+//            case VIEW_TYPE_NORMAL:
+//                ItemTopicViewBinding topicViewBinding = ItemTopicViewBinding.inflate(
+//                        LayoutInflater.from(parent.getContext()), parent, false);
+//                return new TopicViewHolder(topicViewBinding);
+//            case VIEW_TYPE_EMPTY:
+//            default:
+//                ItemTopicEmptyViewBinding topicEmptyViewBinding = ItemTopicEmptyViewBinding.inflate(
+//                        LayoutInflater.from(parent.getContext()), parent, false);
+//
+//                return new EmptyViewHolder(topicEmptyViewBinding);
+//        }
 
-                return new EmptyViewHolder(topicEmptyViewBinding);
-        }
+        ItemTopicViewBinding topicViewBinding = ItemTopicViewBinding.inflate(
+                LayoutInflater.from(parent.getContext()), parent, false);
+        return new TopicViewHolder(topicViewBinding);
     }
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
-        if (holder instanceof TopicViewHolder) {
+//        if (holder instanceof TopicViewHolder) {
             ((TopicViewHolder) holder).onBind(position);
-        } else {
-            ((EmptyViewHolder) holder).onBind(position);
-        }
+//        } else {
+//            ((EmptyViewHolder) holder).onBind(position);
+//        }
     }
 
     public void addItems(List<TopicStartInfo.Item> list) {
@@ -72,17 +75,17 @@ public class TopicsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
         if (mTopicList != null && mTopicList.size() > 0)
             return mTopicList.size();
         else
-            return 1;
+            return 0;
     }
-
-    @Override
-    public int getItemViewType(int position) {
-        if (mTopicList != null && !mTopicList.isEmpty()) {
-            return VIEW_TYPE_NORMAL;
-        } else {
-            return VIEW_TYPE_EMPTY;
-        }
-    }
+//
+//    @Override
+//    public int getItemViewType(int position) {
+//        if (mTopicList != null && !mTopicList.isEmpty()) {
+//            return VIEW_TYPE_NORMAL;
+//        } else {
+//            return VIEW_TYPE_EMPTY;
+//        }
+//    }
 
     public void setListener(TopicAdapterListener listener) {
         this.mListener = listener;

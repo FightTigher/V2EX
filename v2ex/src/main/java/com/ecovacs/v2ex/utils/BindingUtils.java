@@ -3,7 +3,7 @@ package com.ecovacs.v2ex.utils;
 import android.databinding.BindingAdapter;
 import android.support.v7.widget.RecyclerView;
 
-import com.ecovacs.baselibrary.data.http.bean.TopicStartInfo;
+import com.ecovacs.data.bean.TopicStartInfo;
 import com.ecovacs.v2ex.adapter.TopicsAdapter;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 
