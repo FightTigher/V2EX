@@ -1,5 +1,6 @@
 package com.ecovacs.v2ex.di.builder;
 
+import com.ecovacs.v2ex.provider.MeFragmentProvider;
 import com.ecovacs.v2ex.provider.NodesFragmentProvider;
 import com.ecovacs.v2ex.provider.TopicsFragmentProvider;
 import com.ecovacs.v2ex.ui.MainActivity;
@@ -15,6 +16,7 @@ public abstract class ActivityBuilder {
 
     @ContributesAndroidInjector(modules =
             {TopicsFragmentProvider.class
-                    , NodesFragmentProvider.class})
+                    , NodesFragmentProvider.class
+                    , MeFragmentProvider.class})
     abstract MainActivity bindMainActivity();
 }

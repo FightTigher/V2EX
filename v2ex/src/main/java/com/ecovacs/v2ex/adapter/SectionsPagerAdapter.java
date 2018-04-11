@@ -4,6 +4,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
+import com.ecovacs.v2ex.fragment.MeFragment;
 import com.ecovacs.v2ex.fragment.NodesFragment;
 import com.ecovacs.v2ex.fragment.TopicsFragment;
 
@@ -23,7 +24,7 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
         } else if (position == 1) {
             return NodesFragment.newInstance();
         } else {
-            return NodesFragment.newInstance();
+            return MeFragment.newInstance();
         }
     }
 
