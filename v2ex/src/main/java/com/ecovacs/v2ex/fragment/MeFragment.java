@@ -59,6 +59,11 @@ public class MeFragment extends BaseFragment<FragmentMeBinding, MeViewModel>
     }
 
     @Override
+    public void fetchData() {
+
+    }
+
+    @Override
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         mFragmentMeBinding = getViewDataBinding();

@@ -125,6 +125,6 @@ public class AppDataManager implements DataManager {
 
     @Override
     public Single<String> getNodes() {
-        return null;
+        return iv2exApi.getNodes();
     }
 }

@@ -5,7 +5,7 @@ import android.arch.lifecycle.ViewModelProvider;
 import com.ecovacs.baselibrary.base.rx.SchedulerProvider;
 import com.ecovacs.data.DataManager;
 import com.ecovacs.data.bean.TopicStartInfo;
-import com.ecovacs.v2ex.ViewModelProviderFactory;
+import com.ecovacs.data.ViewModelProviderFactory;
 import com.ecovacs.v2ex.adapter.TopicsAdapter;
 import com.ecovacs.v2ex.viewmodel.TopicsViewModel;
 

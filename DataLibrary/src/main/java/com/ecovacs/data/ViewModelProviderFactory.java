@@ -1,4 +1,4 @@
-package com.ecovacs.v2ex;
+package com.ecovacs.data;
 
 import android.arch.lifecycle.ViewModel;
 import android.arch.lifecycle.ViewModelProvider;

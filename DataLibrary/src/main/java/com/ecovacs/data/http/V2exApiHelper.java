@@ -112,6 +112,6 @@ public class V2exApiHelper implements IV2exApi {
 
     @Override
     public Single<String> getNodes() {
-        return null;
+        return v2exApi.getNodes();
     }
 }

@@ -45,9 +45,5 @@ public class BindingUtils {
         }
     }
 
-    @BindingAdapter({"nodes"})
-    public static void showNodesData(RecyclerView recyclerView, List<TopicStartInfo.Item> nodes) {
-
-    }
 
 }

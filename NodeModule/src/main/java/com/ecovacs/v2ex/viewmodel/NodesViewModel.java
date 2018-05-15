@@ -27,7 +27,6 @@ public class NodesViewModel extends BaseViewModel<NodesNavigator> {
     public NodesViewModel(DataManager dataManager, SchedulerProvider schedulerProvider) {
         super(dataManager, schedulerProvider);
         nodesLiveData = new MutableLiveData<>();
-
     }
 
     public void fetchNodes() {
@@ -38,6 +37,7 @@ public class NodesViewModel extends BaseViewModel<NodesNavigator> {
                 .subscribe(new Consumer<String>() {
                     @Override
                     public void accept(String data) throws Exception {
+
 
                     }
                 }));

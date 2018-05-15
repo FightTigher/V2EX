@@ -4,7 +4,7 @@ import android.arch.lifecycle.ViewModelProvider;
 
 import com.ecovacs.baselibrary.base.rx.SchedulerProvider;
 import com.ecovacs.data.DataManager;
-import com.ecovacs.v2ex.ViewModelProviderFactory;
+import com.ecovacs.data.ViewModelProviderFactory;
 import com.ecovacs.v2ex.viewmodel.MeViewModel;
 
 import dagger.Module;

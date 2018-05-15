@@ -21,7 +21,6 @@ import javax.inject.Inject;
 /**
  * Created by liang.liu on 2018/4/11.
  */
-
 public class NodesFragment extends BaseFragment<FragmentNodesBinding, NodesViewModel>
         implements NodesNavigator {
 
@@ -60,6 +59,11 @@ public class NodesFragment extends BaseFragment<FragmentNodesBinding, NodesViewM
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         nodesViewModel.setNavigator(this);
+    }
+
+    @Override
+    public void fetchData() {
+        nodesViewModel.fetchNodes();
     }
 
     @Override

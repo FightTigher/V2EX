@@ -79,6 +79,11 @@ public class TopicsFragment extends BaseFragment<FragmentTopicsBinding, TopicsVi
     }
 
     @Override
+    public void fetchData() {
+
+    }
+
+    @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         mFragmentTopicsBinding = getViewDataBinding();

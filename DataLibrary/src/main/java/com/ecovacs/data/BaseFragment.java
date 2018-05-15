@@ -24,6 +24,9 @@ public abstract class BaseFragment<T extends ViewDataBinding, V extends BaseView
     private View mRootView;
     private T mViewDataBinding;
     private V mViewModel;
+    private boolean isVisibleToUser;
+    private boolean isViewInitiated;
+    private boolean isDataInitiated;
 
     /**
      * Override for set binding variable
@@ -62,6 +65,13 @@ public abstract class BaseFragment<T extends ViewDataBinding, V extends BaseView
         performDependencyInjection();
         mViewModel = getViewModel();
         setHasOptionsMenu(false);
+        prepareFetchData();
+    }
+
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        isViewInitiated = true;
     }
 
     @Override
@@ -70,6 +80,29 @@ public abstract class BaseFragment<T extends ViewDataBinding, V extends BaseView
         mRootView = mViewDataBinding.getRoot();
         return mRootView;
     }
+
+    @Override
+    public void setUserVisibleHint(boolean isVisibleToUser) {
+        super.setUserVisibleHint(isVisibleToUser);
+        this.isVisibleToUser = isVisibleToUser;
+        prepareFetchData();
+    }
+
+    public abstract void fetchData();
+
+    public boolean prepareFetchData() {
+        return prepareFetchData(false);
+    }
+
+    public boolean prepareFetchData(boolean forceUpdate) {
+        if (isVisibleToUser && isViewInitiated && (!isDataInitiated || forceUpdate)) {
+            fetchData();
+            isDataInitiated = true;
+            return true;
+        }
+        return false;
+    }
+
 
     @Override
     public void onDetach() {

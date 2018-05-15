@@ -49,8 +49,8 @@ public class TopicsViewModel extends BaseViewModel<TopicsNavigator> {
                 .observeOn(getSchedulerProvider().ui())
                 .subscribe(new Consumer<String>() {
                     @Override
-                    public void accept(String s) throws Exception {
-                        TopicStartInfo topicStartInfo = new Fruit().fromHtml(s, TopicStartInfo.class);
+                    public void accept(String data) throws Exception {
+                        TopicStartInfo topicStartInfo = new Fruit().fromHtml(data, TopicStartInfo.class);
                         List<TopicStartInfo.Item> list = topicStartInfo.getItems();
                         if (list != null) {
                             topicListLiveData.setValue(list);
