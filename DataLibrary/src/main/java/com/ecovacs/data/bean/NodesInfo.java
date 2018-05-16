@@ -2,81 +2,81 @@ package com.ecovacs.data.bean;
 
 import com.ecovacs.baselibrary.utils.StringUtils;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import me.ghui.fruit.annotations.Pick;
 
-@Pick(value = "div#Main")
-public class NodesInfo extends BaseInfo {
+@Pick(value = "div.box:last-child div > table")
+public class NodesInfo extends ArrayList<NodesInfo.Item> implements IBase{
 
-    @Pick(value = "div.cell table")
-    private List<Item> items;
+    private String mResponseBody;
+
 
     @Override
     public boolean isValid() {
-        if (items == null || items.size() <= 0)
+        if (size() <= 0)
             return true;
 
-        return StringUtils.isNull(new CharSequence[]{this.items.get(0).fade});
+        return StringUtils.isNull(new CharSequence[]{this.get(0).category});
+    }
+
+    @Override
+    public String getResponse() {
+        return this.mResponseBody;
+    }
+
+    @Override
+    public void setResponse(String paramString) {
+        this.mResponseBody = paramString;
     }
 
 
-    private static class Item {
+    public static class Item {
         @Pick(value = "span.fade", attr = "ownText")
-        private String fade;
-        @Pick(value = "td>a[href^=/go]")
-        private List<Node> nodes;
-
-
-        private static class Node {
-            @Pick(value = "td>a[href^=/go]", attr = "href")
-            private String nodeLink;
-
-            @Pick(value = "td>a[href^=/go]")
-            private String nodeName;
-
-            public String getNodeLink() {
-                return nodeLink;
-            }
-
-            public String getNodeName() {
-                return nodeName;
-            }
-
-            @Override
-            public String toString() {
-                return "Node{" +
-                        "nodeLink='" + nodeLink + '\'' +
-                        ", nodeName='" + nodeName + '\'' +
-                        '}';
-            }
+        private String category;
+        @Pick(value = "a")
+        private List<NodeItem> nodes;
+        public String getCategory() {
+            return category;
         }
 
-        public String getFade() {
-            return fade;
-        }
-
-        public List<Node> getNodes() {
+        public List<NodeItem> getNodes() {
             return nodes;
         }
 
         @Override
         public String toString() {
             return "Item{" +
-                    "fade='" + fade + '\'' +
+                    "category='" + category + '\'' +
                     ", nodes=" + nodes +
                     '}';
         }
+
+        public static class NodeItem {
+            @Pick(value = "a", attr = "href")
+            private String link;
+
+            @Pick(value = "a")
+            private String name;
+
+            public String getLink() {
+                return link;
+            }
+
+            public String getName() {
+                return name;
+            }
+
+            @Override
+            public String toString() {
+                return "NodeItem{" +
+                        "link='" + link + '\'' +
+                        ", name='" + name + '\'' +
+                        '}';
+            }
+        }
+
     }
 
-    public List<Item> getItems() {
-        return items;
-    }
-
-    @Override
-    public String toString() {
-        return "NodesInfo{" +
-                "items=" + items +
-                '}';
-    }
 }
