@@ -7,7 +7,7 @@
 
         <variable
             name="viewModel"
-            type="com.ecovacs.v2ex.viewmodel.NodesItemViewModel" />
+            type="com.ecovacs.v2ex.viewmodel.NavItemViewModel" />
 
     </data>
 
@@ -18,7 +18,17 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@{viewModel.category}" />
+            android:drawableStart="@color/black_aa"
+            android:text="@{viewModel.category}"
+            android:textColor="@color/black_aa"
+            android:textSize="14sp" />
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rcv_item_node"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:scrollbars="none"
+            app:item_nodes="@{viewModel.nodeArrayList}" />
 
 
     </RelativeLayout>

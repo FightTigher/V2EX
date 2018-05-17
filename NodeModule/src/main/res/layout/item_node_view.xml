@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.ecovacs.v2ex.viewmodel.NodeViewModel" />
+
+    </data>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/node_item_margin_top_bottom"
+            android:layout_marginLeft="@dimen/node_item_margin_left_right"
+            android:layout_marginRight="@dimen/node_item_margin_left_right"
+            android:layout_marginTop="@dimen/node_item_margin_top_bottom"
+            android:background="@color/gray"
+            android:text="@{viewModel.name}" />
+
+    </RelativeLayout>
+
+</layout>

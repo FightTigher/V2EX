@@ -4,6 +4,7 @@ import android.databinding.BindingAdapter;
 import android.support.v7.widget.RecyclerView;
 
 import com.ecovacs.data.bean.NodesInfo;
+import com.ecovacs.v2ex.adapter.ItemNodeAdapter;
 import com.ecovacs.v2ex.adapter.NodesAdapter;
 
 import java.util.List;
@@ -30,6 +31,16 @@ public class BindingUtils {
                     topicAdapter.addItems(nodes);
                 }
             }
+        }
+    }
+
+    @BindingAdapter({"item_nodes"})
+    public static void showItemNodesData(RecyclerView recyclerView, List<NodesInfo.Item.NodeItem> nodeItems) {
+        ItemNodeAdapter adapter = (ItemNodeAdapter) recyclerView.getAdapter();
+
+        if (adapter != null) {
+            adapter.clearItems();
+            adapter.addItems(nodeItems);
         }
     }
 }

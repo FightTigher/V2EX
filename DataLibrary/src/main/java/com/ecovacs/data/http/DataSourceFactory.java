@@ -3,7 +3,6 @@ package com.ecovacs.data.http;
 import android.os.Environment;
 import android.util.Log;
 
-import com.ecovacs.baselibrary.BuildConfig;
 
 import java.io.File;
 import java.util.concurrent.TimeUnit;
@@ -67,9 +66,9 @@ public class DataSourceFactory {
                     .writeTimeout(3, TimeUnit.SECONDS)
                     .cache(new Cache(httpCacheDirectory, cacheSize));
 
-            if (BuildConfig.DEBUG) {
+
                 builder.addInterceptor(httpLoggingInterceptor);
-            }
+
 
             OkHttpClient client = builder.build();
 
