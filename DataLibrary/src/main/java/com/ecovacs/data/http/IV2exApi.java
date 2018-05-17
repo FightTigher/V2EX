@@ -69,7 +69,7 @@ public interface IV2exApi {
     Single<String> loadMoreTopicsByNode(@Query("tab") String tab,
                                         @Query("p") String p);
 
-    @GET("/?tab=nodes")
+    @GET("/")
     Single<String> getNodes();
 
 

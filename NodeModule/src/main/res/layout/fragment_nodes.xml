@@ -18,12 +18,22 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/rcv_nodes"
+        <com.ecovacs.baselibrary.view.MultipleStatusView
+            android:id="@+id/multipleStatusView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:scrollbars="none"
-            app:nodes="@{viewModel.nodesObservableArrayList}" />
+            app:emptyView="@layout/layout_empty_view"
+            app:errorView="@layout/layout_error_view"
+            app:loadingView="@layout/layout_loading_view"
+            app:noNetworkView="@layout/layout_network_view">
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/rcv_nodes"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scrollbars="none"
+                app:nodes="@{viewModel.nodesObservableArrayList}" />
+        </com.ecovacs.baselibrary.view.MultipleStatusView>
 
     </android.support.constraint.ConstraintLayout>
 

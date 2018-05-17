@@ -37,7 +37,7 @@ public class TopicStartInfo extends BaseInfo {
         private String tag;
         @Pick(value = "a.node", attr = "href")
         private String tagLink;
-        @Pick(value = "span.small.fade", attr = "ownText")
+        @Pick(value = "span.topic_info", attr = "ownText")
         private String time;
         @Pick(value = "span.item_title")
         private String title;

@@ -1,31 +1,75 @@
 package com.ecovacs.v2ex.adapter;
 
-import android.view.View;
+import android.support.v7.widget.RecyclerView;
+import android.view.LayoutInflater;
 import android.view.ViewGroup;
-import android.widget.BaseAdapter;
+
+import com.ecovacs.baselibrary.base.BaseViewHolder;
+import com.ecovacs.data.bean.NodesInfo;
+import com.ecovacs.v2ex.databinding.ItemNodenavViewBinding;
+import com.ecovacs.v2ex.viewmodel.NodesItemViewModel;
+
+import java.util.List;
 
 /**
  * Created by liang.liu on 2018/4/11.
  */
 
-public class NodesAdapter extends BaseAdapter{
+public class NodesAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
+
+    private List<NodesInfo.Item> nodes;
+
+    public NodesAdapter(List<NodesInfo.Item> nodes) {
+        this.nodes = nodes;
+    }
+
+    public void clearItems() {
+        nodes.clear();
+    }
+
+    public void addItems(List<NodesInfo.Item> nodes) {
+        this.nodes.addAll(nodes);
+        notifyDataSetChanged();
+    }
+
     @Override
-    public int getCount() {
+    public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+
+        ItemNodenavViewBinding itemNodenavViewBinding = ItemNodenavViewBinding.inflate(LayoutInflater.from(parent.getContext()), parent, false);
+        return new NodeViewHolder(itemNodenavViewBinding);
+    }
+
+    @Override
+    public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
+        ((NodeViewHolder) holder).onBind(position);
+    }
+
+    private class NodeViewHolder extends BaseViewHolder {
+
+        private final ItemNodenavViewBinding mBinding;
+        private NodesItemViewModel viewModel;
+
+        public NodeViewHolder(ItemNodenavViewBinding binding) {
+            super(binding.getRoot());
+            this.mBinding = binding;
+        }
+
+        @Override
+        public void onBind(int position) {
+            NodesInfo.Item item = nodes.get(position);
+            viewModel = new NodesItemViewModel(item);
+            mBinding.setViewModel(viewModel);
+
+            mBinding.executePendingBindings();
+        }
+    }
+
+    @Override
+    public int getItemCount() {
+        if (nodes != null && nodes.size() > 0) {
+            return nodes.size();
+        }
         return 0;
     }
 
-    @Override
-    public Object getItem(int i) {
-        return null;
-    }
-
-    @Override
-    public long getItemId(int i) {
-        return 0;
-    }
-
-    @Override
-    public View getView(int i, View view, ViewGroup viewGroup) {
-        return null;
-    }
 }

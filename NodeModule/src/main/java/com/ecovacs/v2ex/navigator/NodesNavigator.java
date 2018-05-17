@@ -5,4 +5,11 @@ package com.ecovacs.v2ex.navigator;
  */
 
 public interface NodesNavigator {
+    void showEmpty();
+
+    void showLoading();
+
+    void noNetWork();
+
+    void handleError(Throwable throwable);
 }
