@@ -16,11 +16,14 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/node_item_margin_top_bottom"
-            android:layout_marginLeft="@dimen/node_item_margin_left_right"
-            android:layout_marginRight="@dimen/node_item_margin_left_right"
-            android:layout_marginTop="@dimen/node_item_margin_top_bottom"
-            android:background="@color/gray"
+            android:layout_marginEnd="10dp"
+            android:layout_marginTop="12dp"
+            android:textSize="14sp"
+            android:background="@color/node_color"
+            android:paddingBottom="@dimen/node_item_padding_top_bottom"
+            android:paddingEnd="@dimen/node_item_padding_left_right"
+            android:paddingStart="@dimen/node_item_padding_left_right"
+            android:paddingTop="@dimen/node_item_padding_top_bottom"
             android:text="@{viewModel.name}" />
 
     </RelativeLayout>

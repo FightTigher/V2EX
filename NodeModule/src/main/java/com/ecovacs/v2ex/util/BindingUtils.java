@@ -36,11 +36,13 @@ public class BindingUtils {
 
     @BindingAdapter({"item_nodes"})
     public static void showItemNodesData(RecyclerView recyclerView, List<NodesInfo.Item.NodeItem> nodeItems) {
-        ItemNodeAdapter adapter = (ItemNodeAdapter) recyclerView.getAdapter();
-
-        if (adapter != null) {
-            adapter.clearItems();
-            adapter.addItems(nodeItems);
+        ScaleInAnimationAdapter scaleInAnimationAdapter = (ScaleInAnimationAdapter) recyclerView.getAdapter();
+        if (scaleInAnimationAdapter != null) {
+            ItemNodeAdapter adapter = (ItemNodeAdapter) scaleInAnimationAdapter.getWrappedAdapter();
+            if (adapter != null) {
+                adapter.clearItems();
+                adapter.addItems(nodeItems);
+            }
         }
     }
 }

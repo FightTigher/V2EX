@@ -28,7 +28,7 @@ android {
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
 
-    compile project(':opensourcelibrary')
+    api project(':opensourcelibrary')
 
     implementation rootProject.ext.dependencies["recyclerview-v7"]
     implementation rootProject.ext.dependencies["design"]
@@ -37,8 +37,8 @@ dependencies {
     annotationProcessor rootProject.ext.dependencies["glide-compiler"]
 
 
-    compile rootProject.ext.dependencies["rxandroid"]
-    compile rootProject.ext.dependencies["rxjava"]
+    api rootProject.ext.dependencies["rxandroid"]
+    api rootProject.ext.dependencies["rxjava"]
 
 
 

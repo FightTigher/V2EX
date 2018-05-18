@@ -17,6 +17,8 @@ import com.google.android.flexbox.JustifyContent;
 
 import java.util.List;
 
+import jp.wasabeef.recyclerview.adapters.ScaleInAnimationAdapter;
+
 /**
  * Created by liang.liu on 2018/4/11.
  */
@@ -71,15 +73,28 @@ public class NodesAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
 
             ItemNodeAdapter itemNodeAdapter = new ItemNodeAdapter(item.getNodes());
 
-            FlexboxLayoutManager mLayoutManager = new FlexboxLayoutManager(context);
+            FlexboxLayoutManager mLayoutManager = new FlexboxLayoutManager(context){
+                @Override
+                public boolean canScrollHorizontally() {
+                    return false;
+                }
+
+                @Override
+                public boolean canScrollVertically() {
+                    return false;
+                }
+            };
             mLayoutManager.setFlexWrap(FlexWrap.WRAP);
             mLayoutManager.setFlexDirection(FlexDirection.ROW);
             mLayoutManager.setAlignItems(AlignItems.CENTER);
             mLayoutManager.setJustifyContent(JustifyContent.FLEX_START);
 
+            ScaleInAnimationAdapter scaleAdapter = new ScaleInAnimationAdapter(itemNodeAdapter, 1.1f);
+            scaleAdapter.setFirstOnly(false);
+            scaleAdapter.setDuration(300);
 
             mBinding.rcvItemNode.setLayoutManager(mLayoutManager);
-            mBinding.rcvItemNode.setAdapter(itemNodeAdapter);
+            mBinding.rcvItemNode.setAdapter(scaleAdapter);
 
             mBinding.executePendingBindings();
         }

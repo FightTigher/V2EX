@@ -11,17 +11,22 @@
 
     </data>
 
-    <RelativeLayout
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:paddingTop="@dimen/node_margin"
+        android:paddingStart="@dimen/node_margin"
+        android:orientation="vertical"
+        tools:ignore="RtlSymmetry">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/category_magrin_bottom"
             android:drawableStart="@color/black_aa"
             android:text="@{viewModel.category}"
             android:textColor="@color/black_aa"
-            android:textSize="14sp" />
+            android:textSize="18sp" />
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/rcv_item_node"
@@ -31,6 +36,6 @@
             app:item_nodes="@{viewModel.nodeArrayList}" />
 
 
-    </RelativeLayout>
+    </LinearLayout>
 
 </layout>

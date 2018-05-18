@@ -30,25 +30,21 @@ android {
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
-
-    androidTestCompile('com.android.support.test.espresso:espresso-core:3.0.1', {
-        exclude group: 'com.android.support', module: 'support-annotations'
-    })
+    api fileTree(dir: 'libs', include: ['*.jar'])
 
     // Lifecycle arch
-    compile "android.arch.lifecycle:runtime:$rootProject.ext.archVersion"
-    compile "android.arch.lifecycle:extensions:$rootProject.ext.archVersion"
+    api "android.arch.lifecycle:runtime:$rootProject.ext.archVersion"
+    api "android.arch.lifecycle:extensions:$rootProject.ext.archVersion"
     annotationProcessor "android.arch.lifecycle:compiler:$rootProject.ext.archVersion"
 
 
-    compile rootProject.ext.dependencies["butterknife"]
+    api rootProject.ext.dependencies["butterknife"]
     annotationProcessor rootProject.ext.dependencies["butterknife-compiler"]
 
-    compile rootProject.ext.dependencies["gson"]
-    compile rootProject.ext.dependencies["ormlite-android"]
+    api rootProject.ext.dependencies["gson"]
+    api rootProject.ext.dependencies["ormlite-android"]
 
     //Logger
-    compile "com.jakewharton.timber:timber:$rootProject.ext.timberVersion"
+    api "com.jakewharton.timber:timber:$rootProject.ext.timberVersion"
 
 }

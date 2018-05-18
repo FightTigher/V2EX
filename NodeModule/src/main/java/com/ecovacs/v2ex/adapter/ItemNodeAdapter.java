@@ -2,12 +2,12 @@ package com.ecovacs.v2ex.adapter;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
 
 import com.ecovacs.baselibrary.base.BaseViewHolder;
 import com.ecovacs.data.bean.NodesInfo;
-import com.ecovacs.v2ex.databinding.ItemNodenavViewBinding;
+import com.ecovacs.v2ex.databinding.ItemNodeViewBinding;
+import com.ecovacs.v2ex.viewmodel.NodeViewModel;
 
 import java.util.List;
 
@@ -22,8 +22,8 @@ public class ItemNodeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
 
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-
-        return null;
+        ItemNodeViewBinding itemNodeViewBinding = ItemNodeViewBinding.inflate(LayoutInflater.from(parent.getContext()), parent, false);
+        return new ItemNodeViewHolder(itemNodeViewBinding);
     }
 
     @Override
@@ -50,12 +50,21 @@ public class ItemNodeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
 
     public class ItemNodeViewHolder extends BaseViewHolder {
 
-        public ItemNodeViewHolder(View itemView) {
-            super(itemView);
+        private final ItemNodeViewBinding binding;
+
+        public ItemNodeViewHolder(ItemNodeViewBinding itemView) {
+            super(itemView.getRoot());
+            this.binding = itemView;
         }
 
         @Override
         public void onBind(int position) {
+            NodesInfo.Item.NodeItem nodeItem = nodeItems.get(position);
+            NodeViewModel nodeViewModel = new NodeViewModel(nodeItem);
+
+            binding.setViewModel(nodeViewModel);
+
+            binding.executePendingBindings();
 
         }
     }

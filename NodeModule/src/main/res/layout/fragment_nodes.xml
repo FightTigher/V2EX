@@ -16,7 +16,8 @@
     <android.support.constraint.ConstraintLayout
         android:id="@+id/constraintLayout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@color/bg_color">
 
         <com.ecovacs.baselibrary.view.MultipleStatusView
             android:id="@+id/multipleStatusView"
@@ -31,7 +32,6 @@
                 android:id="@+id/rcv_nodes"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_margin="@dimen/node_margin"
                 android:scrollbars="none"
                 app:nodes="@{viewModel.nodesObservableArrayList}" />
         </com.ecovacs.baselibrary.view.MultipleStatusView>

@@ -38,7 +38,7 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
-    compile project(":DataLibrary")
+    api project(":DataLibrary")
 
     implementation rootProject.ext.dependencies["support-v4"]
     implementation rootProject.ext.dependencies["appcompat-v7"]
@@ -53,7 +53,7 @@ dependencies {
     annotationProcessor "com.google.dagger:dagger-android-processor:$rootProject.ext.daggerVersion"
     implementation "com.google.dagger:dagger-android-support:$rootProject.ext.daggerVersion"
 
-    compile 'me.ghui:Fruit:1.0.4'
+    implementation 'me.ghui:Fruit:1.0.4'
 
     implementation 'jp.wasabeef:recyclerview-animators:2.3.0'
 }

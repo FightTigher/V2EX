@@ -49,5 +49,5 @@ dependencies {
     annotationProcessor "com.google.dagger:dagger-android-processor:$rootProject.ext.daggerVersion"
     implementation "com.google.dagger:dagger-android-support:$rootProject.ext.daggerVersion"
 
-    compile project (':baselibrary')
+    api project (':baselibrary')
 }
