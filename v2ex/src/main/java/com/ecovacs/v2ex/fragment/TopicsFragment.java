@@ -11,6 +11,7 @@ import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
 
+import com.ecovacs.baselibrary.view.LinearLayoutColorDivider;
 import com.ecovacs.data.BaseFragment;
 import com.ecovacs.data.bean.TopicStartInfo;
 import com.ecovacs.v2ex.BR;
@@ -102,6 +103,8 @@ public class TopicsFragment extends BaseFragment<FragmentTopicsBinding, TopicsVi
         mLayoutManager = new LinearLayoutManager(getContext());
         mLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         mFragmentTopicsBinding.rcvTopics.setLayoutManager(mLayoutManager);
+        mFragmentTopicsBinding.rcvTopics.addItemDecoration(new LinearLayoutColorDivider(getResources(),
+                R.color.node_nav_color, R.dimen.item_divider, LinearLayoutManager.VERTICAL));
         AlphaInAnimationAdapter alphaAdapter = new AlphaInAnimationAdapter(mTopicAdapter);
         alphaAdapter.setFirstOnly(false);
         alphaAdapter.setDuration(300);
@@ -112,8 +115,8 @@ public class TopicsFragment extends BaseFragment<FragmentTopicsBinding, TopicsVi
         mFragmentTopicsBinding.rcvTopics.setAdapter(scaleAdapter);
 
         mFragmentTopicsBinding.refreshLayout.setEnableHeaderTranslationContent(true);
-        if (((MaterialHeader)mFragmentTopicsBinding.refreshLayout.getRefreshHeader()) != null) {
-            ((MaterialHeader)mFragmentTopicsBinding.refreshLayout.getRefreshHeader()).setShowBezierWave(true);
+        if (((MaterialHeader) mFragmentTopicsBinding.refreshLayout.getRefreshHeader()) != null) {
+            ((MaterialHeader) mFragmentTopicsBinding.refreshLayout.getRefreshHeader()).setShowBezierWave(true);
         }
 
         mFragmentTopicsBinding.refreshLayout.setOnRefreshListener(new OnRefreshListener() {
@@ -160,20 +163,17 @@ public class TopicsFragment extends BaseFragment<FragmentTopicsBinding, TopicsVi
 
     @Override
     public void handleError(Throwable throwable) {
-        Log.e("TopicFragment", "throwable : " + throwable.toString());
         mFragmentTopicsBinding.multipleStatusView.showError();
     }
 
     @Override
     public void loadMoreTopics(List<TopicStartInfo.Item> topicList) {
-        Log.e("TopicFragment", "loadMoreTopics");
         mTopicAdapter.addItems(topicList);
 
     }
 
     @Override
     public void onRetryClick() {
-        Log.e("TopicFragment", "onRetryClick");
         mTopicsViewModel.fetchTopics();
     }
 

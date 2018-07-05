@@ -3,4 +3,5 @@
     <dimen name="node_item_padding_top_bottom">4dp</dimen>
     <dimen name="node_item_padding_left_right">12dp</dimen>
     <dimen name="category_magrin_bottom">5dp</dimen>
+    <dimen name="item_divider">1px</dimen>
 </resources>
