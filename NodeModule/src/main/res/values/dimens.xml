@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="node_item_padding_top_bottom">5dp</dimen>
-    <dimen name="node_item_padding_left_right">10dp</dimen>
+    <dimen name="node_item_padding_top_bottom">4dp</dimen>
+    <dimen name="node_item_padding_left_right">12dp</dimen>
     <dimen name="category_magrin_bottom">5dp</dimen>
 </resources>

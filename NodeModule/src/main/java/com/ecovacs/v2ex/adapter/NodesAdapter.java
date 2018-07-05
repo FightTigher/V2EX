@@ -4,20 +4,15 @@ import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.ecovacs.baselibrary.base.BaseViewHolder;
 import com.ecovacs.data.bean.NodesInfo;
+import com.ecovacs.v2ex.R;
 import com.ecovacs.v2ex.databinding.ItemNodenavViewBinding;
 import com.ecovacs.v2ex.viewmodel.NavItemViewModel;
-import com.google.android.flexbox.AlignItems;
-import com.google.android.flexbox.FlexDirection;
-import com.google.android.flexbox.FlexWrap;
-import com.google.android.flexbox.FlexboxLayoutManager;
-import com.google.android.flexbox.JustifyContent;
 
 import java.util.List;
-
-import jp.wasabeef.recyclerview.adapters.ScaleInAnimationAdapter;
 
 /**
  * Created by liang.liu on 2018/4/11.
@@ -52,17 +47,18 @@ public class NodesAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
         ((NodeViewHolder) holder).onBind(position);
     }
 
+
     private class NodeViewHolder extends BaseViewHolder {
 
         private final Context context;
         private ItemNodenavViewBinding mBinding;
         private NavItemViewModel viewModel;
+        private boolean hasAdd = false;
 
         public NodeViewHolder(ItemNodenavViewBinding binding, Context context) {
             super(binding.getRoot());
             this.mBinding = binding;
             this.context = context;
-
         }
 
         @Override
@@ -70,32 +66,12 @@ public class NodesAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
             NodesInfo.Item item = nodes.get(position);
             viewModel = new NavItemViewModel(item);
             mBinding.setViewModel(viewModel);
-
-            ItemNodeAdapter itemNodeAdapter = new ItemNodeAdapter(item.getNodes());
-
-            FlexboxLayoutManager mLayoutManager = new FlexboxLayoutManager(context){
-                @Override
-                public boolean canScrollHorizontally() {
-                    return false;
-                }
-
-                @Override
-                public boolean canScrollVertically() {
-                    return false;
-                }
-            };
-            mLayoutManager.setFlexWrap(FlexWrap.WRAP);
-            mLayoutManager.setFlexDirection(FlexDirection.ROW);
-            mLayoutManager.setAlignItems(AlignItems.CENTER);
-            mLayoutManager.setJustifyContent(JustifyContent.FLEX_START);
-
-            ScaleInAnimationAdapter scaleAdapter = new ScaleInAnimationAdapter(itemNodeAdapter, 1.1f);
-            scaleAdapter.setFirstOnly(false);
-            scaleAdapter.setDuration(300);
-
-            mBinding.rcvItemNode.setLayoutManager(mLayoutManager);
-            mBinding.rcvItemNode.setAdapter(scaleAdapter);
-
+            mBinding.fblNodes.removeAllViews();
+            for (NodesInfo.Item.NodeItem nodeItem : item.getNodes()) {
+                TextView nodeName = (TextView) LayoutInflater.from(context).inflate(R.layout.item_node_view_cp, null);
+                nodeName.setText(nodeItem.getName());
+                mBinding.fblNodes.addView(nodeName);
+            }
             mBinding.executePendingBindings();
         }
     }

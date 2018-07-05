@@ -93,13 +93,13 @@ public class NodesFragment extends BaseFragment<FragmentNodesBinding, NodesViewM
         mLayoutManager = new LinearLayoutManager(getContext());
         mLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         mFragmentNodesBinding.rcvNodes.setLayoutManager(mLayoutManager);
-        mFragmentNodesBinding.rcvNodes.setNestedScrollingEnabled(false);
+        mFragmentNodesBinding.rcvNodes.setItemViewCacheSize(4);
 
         AlphaInAnimationAdapter alphaAdapter = new AlphaInAnimationAdapter(nodesAdapter);
         alphaAdapter.setFirstOnly(false);
         alphaAdapter.setDuration(300);
 
-        ScaleInAnimationAdapter scaleAdapter = new ScaleInAnimationAdapter(alphaAdapter, 1.1f);
+        ScaleInAnimationAdapter scaleAdapter = new ScaleInAnimationAdapter(alphaAdapter, 0.9f);
         scaleAdapter.setFirstOnly(false);
         scaleAdapter.setDuration(300);
         mFragmentNodesBinding.rcvNodes.setAdapter(scaleAdapter);

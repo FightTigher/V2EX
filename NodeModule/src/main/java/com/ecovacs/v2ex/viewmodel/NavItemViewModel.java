@@ -6,8 +6,6 @@ import android.databinding.ObservableList;
 
 import com.ecovacs.data.bean.NodesInfo;
 
-import java.util.List;
-
 public class NavItemViewModel {
 
     public ObservableField<String> category;
@@ -20,8 +18,6 @@ public class NavItemViewModel {
         this.nodeArrayList = new ObservableArrayList<>();
         nodeArrayList.clear();
         nodeArrayList.addAll(item.getNodes());
-
-
     }
 
 }
